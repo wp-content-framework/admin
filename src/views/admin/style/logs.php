@@ -1,6 +1,6 @@
 <?php
 /**
- * WP_Framework_Core Views Admin Style Logs
+ * WP_Framework_Admin Views Admin Style Logs
  *
  * @version 0.0.1
  * @author technote-space

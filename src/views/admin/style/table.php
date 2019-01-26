@@ -1,6 +1,6 @@
 <?php
 /**
- * WP_Framework_Admin Views Admin Style Setting
+ * WP_Framework_Admin Views Admin Style Table
  *
  * @version 0.0.1
  * @author technote-space
@@ -13,10 +13,13 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
 /** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
-$instance->add_style_view( 'admin/style/table' );
 ?>
 <style>
-    #<?php $instance->id();?>-main-contents table .<?php $instance->id(); ?>-setting-detail {
-        float: right;
+    #<?php $instance->id();?>-main-contents table .<?php $instance->id(); ?>-td-0 {
+        background: #e0e0e0 !important;
+    }
+
+    #<?php $instance->id();?>-main-contents table .<?php $instance->id(); ?>-td-1 {
+        background: #eaeaea !important;
     }
 </style>

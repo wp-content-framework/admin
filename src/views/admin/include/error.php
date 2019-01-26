@@ -1,6 +1,6 @@
 <?php
 /**
- * WP_Framework_Admin Views Admin Style Setting
+ * WP_Framework_Admin Views Admin Include Error
  *
  * @version 0.0.1
  * @author technote-space
@@ -13,10 +13,14 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
 /** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
-$instance->add_style_view( 'admin/style/table' );
+/** @var string $message */
 ?>
-<style>
-    #<?php $instance->id();?>-main-contents table .<?php $instance->id(); ?>-setting-detail {
-        float: right;
-    }
-</style>
+<div class="wrap cf-wrap">
+    <div class="icon32 icon32-error"><br/></div>
+    <h2>Error</h2>
+    <div class="error">
+        <p>
+			<?php $instance->h( $message, true ); ?>
+        </p>
+    </div>
+</div>

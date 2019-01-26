@@ -1,6 +1,6 @@
 <?php
 /**
- * WP_Framework_Core Views Admin Sidebar Setting
+ * WP_Framework_Admin Views Admin Sidebar Setting
  *
  * @version 0.0.1
  * @author technote-space

@@ -1,6 +1,6 @@
 <?php
 /**
- * WP_Framework_Core Views Admin Test
+ * WP_Framework_Admin Views Admin Test
  *
  * @version 0.0.1
  * @author technote-space
