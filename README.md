@@ -16,6 +16,7 @@
 
 ## 依存モジュール
 * [controller](https://github.com/wp-content-framework/controller)  
+* [view](https://github.com/wp-content-framework/view)  
 
 ## 基本設定
 - configs/config.php  
