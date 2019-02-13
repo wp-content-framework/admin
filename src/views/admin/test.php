@@ -38,6 +38,7 @@ $instance->add_style_view( 'admin/style/table' );
 	<?php $instance->form( 'input/submit', $args, [
 		'name'  => 'execute',
 		'value' => 'Execute',
+		'class' => 'button-primary',
 	] ); ?>
 	<?php $instance->form( 'close' ); ?>
 <?php else: ?>

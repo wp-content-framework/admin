@@ -77,6 +77,6 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 <?php $instance->form( 'input/submit', $args, [
 	'name'  => 'update',
 	'value' => 'Update',
-	'class' => 'button-primary',
+	'class' => 'button-primary right large',
 ] ); ?>
 <?php $instance->form( 'close', $args ); ?>
