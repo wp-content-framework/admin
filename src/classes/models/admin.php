@@ -331,6 +331,25 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 * @param bool $error
 	 */
 	public function add_message( $message, $group = '', $error = false, $escape = true ) {
+		if ( ! $escape ) {
+			$message = preg_replace_callback( '#\[([^()]+?)\]\s*\((https?://([\w-]+\.)+[\w-]+(/[\w-./?%&=\#]*)?)\)#', function ( $matches ) {
+				return $this->url( $matches[2], $matches[1], false, ! $this->app->utility->is_admin_url( $matches[2] ), [], false );
+			}, $message );
+			$message = wp_kses( $message, $this->apply_filters( 'add_message_allowed_html', [
+				'a'      => [ 'href' => true, 'target' => true, 'rel' => true ],
+				'b'      => [],
+				'br'     => [],
+				'sub'    => [],
+				'sup'    => [],
+				'strong' => [],
+				'h1'     => [],
+				'h2'     => [],
+				'h3'     => [],
+				'h4'     => [],
+				'h5'     => [],
+				'h6'     => [],
+			] ) );
+		}
 		$this->_messages[ $group ][ $error ? 'error' : 'updated' ][] = [ $message, $escape ];
 	}
 }
