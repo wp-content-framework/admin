@@ -333,7 +333,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 */
 	public function add_message( $message, $group = '', $error = false, $escape = true, $override_allowed_html = null ) {
 		if ( ! $escape ) {
-			$message = preg_replace_callback( '#\[([^()]+?)\]\s*\((https?://([\w-]+\.)+[\w-]+(/[\w-./?%&=\#]*)?)\)#', function ( $matches ) {
+			$message = preg_replace_callback( '#\[([^()]+?)\]\s*\((https?://([\w\-]+\.)+[\w\-]+(/[\w\-\./\?%&=\#]*)?)\)#', function ( $matches ) {
 				return $this->url( $matches[2], $matches[1], false, ! $this->app->utility->is_admin_url( $matches[2] ), [], false );
 			}, $message );
 			$message = $this->app->utility->strip_tags( $message, $override_allowed_html );
