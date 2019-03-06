@@ -42,7 +42,7 @@ interface Admin extends \WP_Framework_Controller\Interfaces\Controller, \WP_Fram
 	public function get_page_slug();
 
 	/**
-	 * @return string
+	 * presenter
 	 */
 	public function presenter();
 

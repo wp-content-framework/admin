@@ -97,15 +97,14 @@ trait Admin {
 	}
 
 	/**
-	 * @return string
+	 * presenter
 	 */
 	public function presenter() {
 		$args = $this->get_view_args();
 		$slug = $this->get_page_slug();
 		$this->add_style_view( 'admin/style/' . $slug, $args );
 		$this->add_script_view( 'admin/script/' . $slug, $args );
-
-		return $this->get_view( 'admin/' . $this->get_page_slug(), $args );
+		$this->get_view( 'admin/' . $this->get_page_slug(), $args, true );
 	}
 
 	/**
