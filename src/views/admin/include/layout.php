@@ -21,6 +21,6 @@ $instance->add_style_view( 'admin/style/button' );
     <div class="icon32 icon32-<?php $instance->h( $slug ); ?>"><br/></div>
     <div id="<?php $instance->id(); ?>-main-contents">
         <h2 id="<?php $instance->id(); ?>-page_title"><?php $instance->h( $page->get_page_title(), true ); ?></h2>
-		<?php echo $page->presenter(); ?>
+		<?php $page->presenter(); ?>
     </div>
 </div>
