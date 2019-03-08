@@ -42,4 +42,10 @@ return [
 	// setting page slug
 	'setting_page_slug'              => 'setting',
 
+	// detail url
+	'detail_url'                     => '',
+
+	// github repo (user/repo)
+	'github_repo'                    => '',
+
 ];
