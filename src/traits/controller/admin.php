@@ -2,7 +2,7 @@
 /**
  * WP_Framework_Admin Traits Controller Admin
  *
- * @version 0.0.14
+ * @version 0.0.16
  * @author Technote
  * @copyright Technote All Rights Reserved
  * @license http://www.opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2
@@ -191,9 +191,13 @@ trait Admin {
 						continue;
 					}
 
-					$id      = $this->apply_filters( 'help_tag_id', $this->app->utility->array_get( $content, 'id', $this->get_help_tab_id( $index ) ), $content, $slug, $index );
+					$id      = $this->apply_filters( 'help_tag_id', $this->app->utility->array_get( $content, 'id', function () use ( $index ) {
+						return $this->get_help_tab_id( $index );
+					} ), $content, $slug, $index );
 					$title   = $this->apply_filters( 'help_tag_title', $this->app->utility->array_get( $content, 'title', 'Help Tab' ), $content, $slug, $index );
-					$content = $this->apply_filters( 'help_tag_content', $this->app->utility->array_get( $content, 'content', $this->get_help_content( $this->app->utility->array_get( $content, 'view' ) ) ), $content, $slug, $index );
+					$content = $this->apply_filters( 'help_tag_content', $this->app->utility->array_get( $content, 'content', function () use ( $content ) {
+						return $this->get_help_content( $this->app->utility->array_get( $content, 'view' ) );
+					} ), $content, $slug, $index );
 
 					if ( ! empty( $content ) ) {
 						$current_screen->add_help_tab( [
