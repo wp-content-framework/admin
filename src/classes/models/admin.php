@@ -150,7 +150,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 
 		/** @var \WP_Framework_Admin\Classes\Controllers\Admin\Base $page */
 		foreach ( $this->_pages as $page ) {
-			$hook = add_submenu_page(
+			add_submenu_page(
 				$this->get_menu_slug(),
 				$this->translate( $page->get_page_title() ),
 				$this->translate( $page->get_menu_name() ),
@@ -160,11 +160,6 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 					$this->load();
 				}
 			);
-			if ( $this->page ) {
-				add_action( "load-$hook", function () {
-					$this->page->setup_help();
-				} );
-			}
 		}
 	}
 
