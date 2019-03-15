@@ -24,7 +24,7 @@ $instance->add_style_view( 'admin/style/dashboard_content' );
 			<?php foreach ( $settings as $k => $v ) : ?>
                 <tr>
                     <th>
-                        <label for="<?php $instance->h( $v['id'] ); ?>"><?php $instance->h( $instance->app->utility->array_search( $v, 'title', 'label', '' ) ); ?></label>
+                        <label for="<?php $instance->h( $v['id'] ); ?>"><?php $instance->h( $instance->app->array->search( $v, 'title', 'label', '' ) ); ?></label>
                     </th>
                     <td>
 						<?php if ( ! empty( $v['form_type'] ) ) : ?>

@@ -41,7 +41,7 @@ class Setting extends Base {
 	protected function post_action() {
 		foreach ( $this->app->setting->get_groups() as $group ) {
 			foreach ( $this->app->setting->get_settings( $group ) as $setting ) {
-				$this->app->option->set_post_value( $this->app->utility->array_get( $this->app->setting->get_setting( $setting, true ), 'name', '' ) );
+				$this->app->option->set_post_value( $this->app->array->get( $this->app->setting->get_setting( $setting, true ), 'name', '' ) );
 			}
 		}
 		$this->app->add_message( 'Settings updated.', 'setting' );

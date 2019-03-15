@@ -201,7 +201,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 			return;
 		}
 
-		$pages = $this->app->utility->array_map( $this->_pages, function ( $p ) {
+		$pages = $this->app->array->map( $this->_pages, function ( $p ) {
 			/** @var \WP_Framework_Admin\Classes\Controllers\Admin\Base $p */
 			return $this->get_page_prefix() . $p->get_page_slug();
 		} );
@@ -210,7 +210,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 		/** @var \WP_Framework_Custom_Post\Classes\Models\Custom_Post $custom_post */
 		$custom_post = \WP_Framework_Custom_Post\Classes\Models\Custom_Post::get_instance( $this->app );
 		$types       = $custom_post->get_custom_posts();
-		$types       = array_combine( $this->app->utility->array_map( $types, function ( $p ) {
+		$types       = array_combine( $this->app->array->map( $types, function ( $p ) {
 			/** @var \WP_Framework_Custom_Post\Interfaces\Custom_Post $p */
 			return "edit.php?post_type={$p->get_post_type()}";
 		} ), $types );
@@ -336,7 +336,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 			$message = preg_replace_callback( '#\[([^()]+?)\]\s*\((https?://([\w\-]+\.)+[\w\-]+(/[\w\-\./\?%&=\#]*)?)\)#', function ( $matches ) {
 				return $this->url( $matches[2], $matches[1], false, ! $this->app->utility->is_admin_url( $matches[2] ), [], false );
 			}, $message );
-			$message = $this->app->utility->strip_tags( $message, $override_allowed_html );
+			$message = $this->app->string->strip_tags( $message, $override_allowed_html );
 		}
 		$this->_messages[ $group ][ $error ? 'error' : 'updated' ][] = [ $message, $escape ];
 	}
