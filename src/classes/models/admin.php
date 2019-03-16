@@ -172,8 +172,8 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	private function get_admin_menu_position( $menu_slug, $menu_title ) {
 		$position = $this->apply_filters( 'admin_menu_position' );
 
-		global $wp_version, $menu;
-		if ( isset( $menu["$position"] ) && version_compare( $wp_version, '4.4', '<' ) ) {
+		global $menu;
+		if ( isset( $menu["$position"] ) && $this->compare_wp_version( '4.4', '<' ) ) {
 			$position = $position + substr( base_convert( md5( $menu_slug . $menu_title ), 16, 10 ), - 5 ) * 0.00001;
 			$position = "$position";
 		}
