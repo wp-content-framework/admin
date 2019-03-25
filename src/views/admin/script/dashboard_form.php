@@ -9,7 +9,7 @@
  * @link https://technote.space
  */
 
-if ( ! defined( 'ADD_RICHTEXT_TOOLBAR_BUTTON' ) ) {
+if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
 /** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
