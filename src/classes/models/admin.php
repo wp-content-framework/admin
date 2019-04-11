@@ -246,12 +246,11 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 * @return array
 	 */
 	private function plugin_action_links( array $actions ) {
-		$link = $this->get_view( 'admin/include/action_links', [
+		array_unshift( $actions, $this->get_view( 'admin/include/action_links', [
 			'url' => menu_page_url( $this->get_menu_slug(), false ),
-		] );
-		array_unshift( $actions, $link );
+		] ) );
 
-		return $actions;
+		return $this->apply_filters( 'plugin_action_links', $actions, $this );
 	}
 
 	/**
