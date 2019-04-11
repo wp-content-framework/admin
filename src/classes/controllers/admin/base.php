@@ -79,13 +79,14 @@ abstract class Base extends \WP_Framework_Controller\Classes\Controllers\Base im
 	 * action
 	 */
 	public final function action() {
-		if ( $this->is_post() && $this->nonce_check() ) {
+		$is_valid_update = $this->is_post() && $this->nonce_check();
+		if ( $is_valid_update ) {
 			$this->post_action();
 		} else {
 			$this->get_action();
 		}
 		$this->common_action();
-		$this->do_action( 'controller_action', $this->is_post() && $this->nonce_check() );
+		$this->do_action( 'controller_action', $is_valid_update );
 	}
 
 	/**

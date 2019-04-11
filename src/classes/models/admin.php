@@ -70,8 +70,8 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 */
 	private function load_page() {
 		try {
-			$prefix  = $this->get_page_prefix();
-			$pattern = "#\A{$prefix}(.+)#";
+			$prefix  = preg_quote( $this->get_page_prefix(), '/' );
+			$pattern = "/\A{$prefix}(.+)\z/";
 			$_page   = $this->app->input->get( 'page' );
 			if ( ! empty( $_page ) && is_string( $_page ) && preg_match( $pattern, $_page, $matches ) ) {
 				$page          = $matches[1];
