@@ -20,6 +20,9 @@ return [
 			'add_menu'  => 9,
 			'sort_menu' => 11,
 		],
+		'in_admin_header' => [
+			'setup_help'
+		],
 		'admin_notices' => [
 			'admin_notice',
 		],
