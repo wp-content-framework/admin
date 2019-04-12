@@ -70,9 +70,12 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 		);
 
 		if ( ! $this->app->is_theme ) {
-			add_filter( 'plugin_action_links_' . $this->app->define->plugin_base_name, function ( array $actions ) {
-				return $this->plugin_action_links( $actions );
-			} );
+			add_filter( 'plugin_action_links_' . $this->app->define->plugin_base_name, function (
+				/** @noinspection PhpUnusedParameterInspection */
+				array $actions, $plugin_file, array $plugin_data, $context
+			) {
+				return $this->plugin_action_links( $actions, $plugin_data, $context );
+			}, 10, 4 );
 		}
 
 		/** @var \WP_Framework_Admin\Classes\Controllers\Admin\Base $_page */
@@ -215,15 +218,25 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 
 	/**
 	 * @param array $actions
+	 * @param array $plugin_data
+	 * @param string $context
 	 *
 	 * @return array
 	 */
-	private function plugin_action_links( array $actions ) {
-		array_unshift( $actions, $this->get_view( 'admin/include/action_links', [
-			'url' => menu_page_url( $this->get_menu_slug(), false ),
-		] ) );
+	private function plugin_action_links( array $actions, array $plugin_data, $context ) {
+		$action_links = $this->app->get_config( 'config', 'action_links' );
+		if ( is_array( $action_links ) && ! empty( $action_links ) ) {
+			$action_links = array_filter( $this->app->array->map( $action_links, function ( $setting ) use ( $plugin_data, $context ) {
+				if ( empty( $setting['url'] ) || ! isset( $setting['text'] ) ) {
+					return false;
+				}
 
-		return $this->apply_filters( 'plugin_action_links', $actions, $this );
+				return $this->url( $this->app->utility->value( $setting['url'], $this, $plugin_data, $context ), $setting['text'], true, ! empty( $setting['new_tab'] ), [], false );
+			} ) );
+			! empty( $action_links ) and $actions = array_merge( $action_links, $actions );
+		}
+
+		return $this->apply_filters( 'plugin_action_links', $actions );
 	}
 
 	/**
