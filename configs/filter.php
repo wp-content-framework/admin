@@ -22,6 +22,7 @@ return [
 		],
 		'in_admin_header'     => [
 			'setup_help',
+			'do_page_action',
 		],
 		'admin_notices'       => [
 			'admin_notice',
