@@ -30,7 +30,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 			} );
 
 			const $reset = $( '.form-buttons input[name="reset"]' );
-			if ( ! $._data( $reset.get( 0 ), 'events' ) ) {
+			if ( $reset.length > 0 && ! $._data( $reset.get( 0 ), 'events' ) ) {
 				$reset.on( 'click', function () {
 					if ( window.confirm( '<?php $instance->h( 'Are you sure to reset settings?', true );?>' ) ) {
 						$( this ).closest( 'form' ).submit();
