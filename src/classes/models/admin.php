@@ -172,6 +172,29 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	}
 
 	/**
+	 * @param array $links
+	 * @param $plugin_data
+	 * @param $status
+	 *
+	 * @return array
+	 */
+	private function parse_config_links( array $links, array $plugin_data, $status ) {
+		if ( is_array( $links ) && ! empty( $links ) ) {
+			$links = array_filter( $this->app->array->map( $links, function ( $setting ) use ( $plugin_data, $status ) {
+				if ( empty( $setting['url'] ) || ! isset( $setting['text'] ) ) {
+					return false;
+				}
+
+				return $this->url( $this->app->utility->value( $setting['url'], $this, $plugin_data, $status ), $setting['text'], true, ! empty( $setting['new_tab'] ), [], false );
+			} ) );
+
+			return $links;
+		}
+
+		return [];
+	}
+
+	/**
 	 * @return string
 	 */
 	protected function get_setting_slug() {
