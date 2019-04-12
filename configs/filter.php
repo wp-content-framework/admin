@@ -16,15 +16,18 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 return [
 
 	'admin' => [
-		'admin_menu'    => [
+		'admin_menu'          => [
 			'add_menu'  => 9,
 			'sort_menu' => 11,
 		],
-		'in_admin_header' => [
-			'setup_help'
+		'in_admin_header'     => [
+			'setup_help',
 		],
-		'admin_notices' => [
+		'admin_notices'       => [
 			'admin_notice',
+		],
+		'plugin_action_links' => [
+			'plugin_action_links',
 		],
 	],
 
