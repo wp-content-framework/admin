@@ -172,6 +172,26 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	}
 
 	/**
+	 * @param string[] $plugin_meta
+	 * @param string $plugin_file
+	 * @param array $plugin_data
+	 * @param string $status
+	 *
+	 * @return array
+	 */
+	/** @noinspection PhpUnusedPrivateMethodInspection */
+	private function plugin_row_meta( array $plugin_meta, $plugin_file, array $plugin_data, $status ) {
+		if ( $this->app->is_theme || $plugin_file !== $this->app->define->plugin_base_name ) {
+			return $plugin_meta;
+		}
+
+		$plugin_row_meta = $this->parse_config_links( $this->app->get_config( 'config', 'plugin_row_meta' ), $plugin_data, $status );
+		! empty( $plugin_row_meta ) and $plugin_meta = array_merge( $plugin_meta, $plugin_row_meta );
+
+		return $this->apply_filters( 'plugin_row_meta', $plugin_meta );
+	}
+
+	/**
 	 * @param array $links
 	 * @param $plugin_data
 	 * @param $status

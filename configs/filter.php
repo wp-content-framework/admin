@@ -26,6 +26,9 @@ return [
 		'admin_notices' => [
 			'admin_notice',
 		],
+		'plugin_row_meta'     => [
+			'plugin_row_meta',
+		],
 	],
 
 ];

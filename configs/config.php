@@ -48,4 +48,7 @@ return [
 	// github repo (user/repo)
 	'github_repo'                    => '',
 
+	// plugin row meta
+	'plugin_row_meta'                => [],
+
 ];
