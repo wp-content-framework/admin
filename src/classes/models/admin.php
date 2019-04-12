@@ -95,6 +95,20 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	}
 
 	/**
+	 * do page action
+	 */
+	/** @noinspection PhpUnusedPrivateMethodInspection */
+	private function do_page_action() {
+		global $hook_suffix;
+		if ( isset( $this->_hooks[ $hook_suffix ] ) ) {
+			$page = $this->_hooks[ $hook_suffix ];
+			$this->do_action( 'pre_load_admin_page', $page );
+			$page->action();
+			$this->do_action( 'post_load_admin_page', $page );
+		}
+	}
+
+	/**
 	 * sort menu
 	 */
 	/** @noinspection PhpUnusedPrivateMethodInspection */
@@ -277,10 +291,6 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 */
 	private function load( $page ) {
 		if ( $this->app->user_can( $page->get_capability() ) ) {
-			$this->do_action( 'pre_load_admin_page', $page );
-			$page->action();
-			$this->do_action( 'post_load_admin_page', $page );
-
 			$this->get_view( 'admin/include/layout', [
 				'page' => $page,
 				'slug' => $page->get_page_slug(),
