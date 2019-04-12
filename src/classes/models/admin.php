@@ -77,7 +77,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 
 		/** @var \WP_Framework_Admin\Classes\Controllers\Admin\Base $_page */
 		foreach ( $this->_pages as $_page ) {
-			$hook                  = add_submenu_page(
+			$hook = add_submenu_page(
 				$slug,
 				$this->translate( $_page->get_page_title() ),
 				$this->translate( $_page->get_menu_name() ),
@@ -87,7 +87,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 					$this->load( $_page );
 				}
 			);
-			$this->_hooks[ $hook ] = $_page;
+			false !== $hook && $this->_hooks[ $hook ] = $_page;
 		}
 	}
 
@@ -97,11 +97,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function setup_help() {
 		global $hook_suffix;
-		if ( ! isset( $this->_hooks[ $hook_suffix ] ) ) {
-			return;
-		}
-
-		$this->_hooks[ $hook_suffix ]->setup_help();
+		isset( $this->_hooks[ $hook_suffix ] ) && $this->_hooks[ $hook_suffix ]->setup_help();
 	}
 
 	/**
@@ -231,6 +227,24 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	}
 
 	/**
+	 * @param \WP_Framework_Admin\Classes\Controllers\Admin\Base $page
+	 */
+	private function load( $page ) {
+		if ( $this->app->user_can( $page->get_capability() ) ) {
+			$this->do_action( 'pre_load_admin_page', $page );
+			$page->action();
+			$this->do_action( 'post_load_admin_page', $page );
+
+			$this->get_view( 'admin/include/layout', [
+				'page' => $page,
+				'slug' => $page->get_page_slug(),
+			], true );
+		} else {
+			$this->get_view( 'admin/include/error', [ 'message' => 'Forbidden.' ], true );
+		}
+	}
+
+	/**
 	 * @return string
 	 */
 	public function get_nonce_slug() {
@@ -263,23 +277,6 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 */
 	protected function get_instanceof() {
 		return '\WP_Framework_Admin\Classes\Controllers\Admin\Base';
-	}
-
-	/**
-	 * @param \WP_Framework_Admin\Classes\Controllers\Admin\Base $page
-	 */
-	private function load( $page ) {
-		if ( $this->app->user_can( $page->get_capability() ) ) {
-			$page->action();
-			$this->do_action( 'post_load_admin_page', $page );
-
-			$this->get_view( 'admin/include/layout', [
-				'page' => $page,
-				'slug' => $page->get_page_slug(),
-			], true );
-		} else {
-			$this->get_view( 'admin/include/error', [ 'message' => 'Forbidden.' ], true );
-		}
 	}
 
 	/**
