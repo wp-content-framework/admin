@@ -62,4 +62,7 @@ return [
 		],
 	],
 
+	// plugin row meta
+	'plugin_row_meta'                => [],
+
 ];

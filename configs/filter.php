@@ -29,6 +29,9 @@ return [
 		'plugin_action_links' => [
 			'plugin_action_links',
 		],
+		'plugin_row_meta'     => [
+			'plugin_row_meta',
+		],
 	],
 
 ];
