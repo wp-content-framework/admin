@@ -153,6 +153,14 @@ test
 ## プラグイン情報リンクの追加
 ![plugin row meta](https://raw.githubusercontent.com/technote-space/screenshots/master/wp-content-framework/201904121629.png)
 
+配列で指定します。
+
+|設定値|説明|
+|---|---|
+|url|リンク または リンクを返す関数 (string or closure, required)|
+|label|リンクのテキスト または リンクのテキストを返す関数 (string or closure, required)|
+|new_tab|新しいタブで開くかどうか (bool, optional)|
+
 # Author
 
 [GitHub (Technote)](https://github.com/technote-space)  
