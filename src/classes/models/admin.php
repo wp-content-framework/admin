@@ -179,19 +179,33 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 			return $actions;
 		}
 
-		$action_links = $this->app->get_config( 'config', 'action_links' );
-		if ( is_array( $action_links ) && ! empty( $action_links ) ) {
-			$action_links = array_filter( $this->app->array->map( $action_links, function ( $setting ) use ( $plugin_data, $context ) {
+		$action_links = $this->parse_config_links( $this->app->get_config( 'config', 'action_links' ), $plugin_data, $context );
+		! empty( $action_links ) and $actions = array_merge( $action_links, $actions );
+
+		return $this->apply_filters( 'plugin_action_links', $actions );
+	}
+
+	/**
+	 * @param array $links
+	 * @param $plugin_data
+	 * @param $status
+	 *
+	 * @return array
+	 */
+	private function parse_config_links( array $links, array $plugin_data, $status ) {
+		if ( is_array( $links ) && ! empty( $links ) ) {
+			$links = array_filter( $this->app->array->map( $links, function ( $setting ) use ( $plugin_data, $status ) {
 				if ( empty( $setting['url'] ) || ! isset( $setting['text'] ) ) {
 					return false;
 				}
 
-				return $this->url( $this->app->utility->value( $setting['url'], $this, $plugin_data, $context ), $setting['text'], true, ! empty( $setting['new_tab'] ), [], false );
+				return $this->url( $this->app->utility->value( $setting['url'], $this, $plugin_data, $status ), $setting['text'], true, ! empty( $setting['new_tab'] ), [], false );
 			} ) );
-			! empty( $action_links ) and $actions = array_merge( $action_links, $actions );
+
+			return $links;
 		}
 
-		return $this->apply_filters( 'plugin_action_links', $actions );
+		return [];
 	}
 
 	/**
