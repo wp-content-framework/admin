@@ -2,7 +2,7 @@
 /**
  * WP_Framework_Admin Classes Controller Admin Base
  *
- * @version 0.0.17
+ * @version 0.0.21
  * @author Technote
  * @copyright Technote All Rights Reserved
  * @license http://www.opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2
@@ -199,7 +199,7 @@ abstract class Base extends \WP_Framework_Controller\Classes\Controllers\Base im
 							'content' => $content,
 						] );
 					}
-					$index ++;
+					$index++;
 				}
 
 				$sidebar = $this->apply_filters( 'get_help_sidebar', $this->get_help_sidebar(), $slug );
