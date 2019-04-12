@@ -69,12 +69,6 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 			$this->get_admin_menu_position( $slug, $title )
 		);
 
-		if ( ! $this->app->is_theme ) {
-			add_filter( 'plugin_action_links_' . $this->app->define->plugin_base_name, function ( array $actions ) {
-				return $this->plugin_action_links( $actions );
-			} );
-		}
-
 		/** @var \WP_Framework_Admin\Classes\Controllers\Admin\Base $_page */
 		foreach ( $this->_pages as $_page ) {
 			$hook = add_submenu_page(
@@ -172,6 +166,26 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	}
 
 	/**
+	 * @param string[] $actions
+	 * @param string $plugin_file
+	 * @param array $plugin_data
+	 * @param string $context
+	 *
+	 * @return array
+	 */
+	/** @noinspection PhpUnusedPrivateMethodInspection */
+	private function plugin_action_links( array $actions, $plugin_file, array $plugin_data, $context ) {
+		if ( $this->app->is_theme || $plugin_file !== $this->app->define->plugin_base_name ) {
+			return $actions;
+		}
+
+		$action_links = $this->parse_config_links( $this->app->get_config( 'config', 'action_links' ), $plugin_data, $context );
+		! empty( $action_links ) and $actions = array_merge( $action_links, $actions );
+
+		return $this->apply_filters( 'plugin_action_links', $actions );
+	}
+
+	/**
 	 * @param string[] $plugin_meta
 	 * @param string $plugin_file
 	 * @param array $plugin_data
@@ -254,19 +268,6 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 		}
 
 		return $position;
-	}
-
-	/**
-	 * @param array $actions
-	 *
-	 * @return array
-	 */
-	private function plugin_action_links( array $actions ) {
-		array_unshift( $actions, $this->get_view( 'admin/include/action_links', [
-			'url' => menu_page_url( $this->get_menu_slug(), false ),
-		] ) );
-
-		return $this->apply_filters( 'plugin_action_links', $actions, $this );
 	}
 
 	/**

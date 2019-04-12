@@ -48,6 +48,20 @@ return [
 	// github repo (user/repo)
 	'github_repo'                    => '',
 
+	// action links
+	'action_links'                   => [
+		[
+			'url'  => function (
+				/** @noinspection PhpUnusedParameterInspection */
+				$app, $admin, $plugin_data, $context
+			) {
+				/** @var \WP_Framework_Admin\Classes\Models\Admin $admin */
+				return menu_page_url( $admin->get_menu_slug(), false );
+			},
+			'text' => 'Settings',
+		],
+	],
+
 	// plugin row meta
 	'plugin_row_meta'                => [],
 
