@@ -65,16 +65,16 @@ class Test extends \WP_Framework\Classes\Controllers\Admin\Base {
 		// ... 
 	}
 
-    // GET, POST 共通で行う動作
+	// GET, POST 共通で行う動作
 	protected function common_action() {
-        // wp_enqueue_script('media-upload');
+		// wp_enqueue_script('media-upload');
 	}
 
 	// view に渡す変数設定
 	public function get_view_args() {
-	    return array(
-	        'test' => 'aaaa',
-	    );
+		return array(
+			'test' => 'aaaa',
+		);
 	}
 }
 ```
