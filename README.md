@@ -32,6 +32,8 @@
 |setting_page_title|管理画面のメニューのタイトル \[default = Dashboard]|
 |setting_page_priority|管理画面のメニューの優先順位 \[default = 0]|
 |setting_page_slug|管理画面のメニューのslug \[default = setting]|
+|action_links|アクションリンクの追加|
+|plugin_row_meta|プラグイン情報リンクの追加|
 
 ## 画面の追加
 
@@ -63,16 +65,16 @@ class Test extends \WP_Framework\Classes\Controllers\Admin\Base {
 		// ... 
 	}
 
-    // GET, POST 共通で行う動作
+	// GET, POST 共通で行う動作
 	protected function common_action() {
-        // wp_enqueue_script('media-upload');
+		// wp_enqueue_script('media-upload');
 	}
 
 	// view に渡す変数設定
 	public function get_view_args() {
-	    return array(
-	        'test' => 'aaaa',
-	    );
+		return array(
+			'test' => 'aaaa',
+		);
 	}
 }
 ```
@@ -136,6 +138,28 @@ if ( ! defined( 'EXAMPLE_PLUGIN' ) ) {
 
 test
 ```
+
+## アクションリンクの追加
+![action links](https://raw.githubusercontent.com/technote-space/screenshots/master/wp-content-framework/201904121628.png)
+
+配列で指定します。
+
+|設定値|説明|
+|---|---|
+|url|リンク または リンクを返す関数 (string or closure, required)|
+|label|リンクのテキスト または リンクのテキストを返す関数 (string or closure, required)|
+|new_tab|新しいタブで開くかどうか (bool, optional)|
+
+## プラグイン情報リンクの追加
+![plugin row meta](https://raw.githubusercontent.com/technote-space/screenshots/master/wp-content-framework/201904121629.png)
+
+配列で指定します。
+
+|設定値|説明|
+|---|---|
+|url|リンク または リンクを返す関数 (string or closure, required)|
+|label|リンクのテキスト または リンクのテキストを返す関数 (string or closure, required)|
+|new_tab|新しいタブで開くかどうか (bool, optional)|
 
 # Author
 
