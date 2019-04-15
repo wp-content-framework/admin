@@ -44,18 +44,31 @@ trait Dashboard {
 	protected abstract function get_setting_list();
 
 	/**
+	 * @return \Generator
+	 */
+	private function _get_setting_list() {
+		foreach ( $this->get_setting_list() as $name => $option ) {
+			if ( is_int( $name ) && is_string( $option ) ) {
+				$name   = $option;
+				$option = [];
+			}
+			yield $name => $option;
+		}
+	}
+
+	/**
 	 * post
 	 */
 	protected function post_action() {
 		if ( $this->app->input->post( 'update' ) ) {
 			$this->pre_update();
-			foreach ( $this->get_setting_list() as $name => $option ) {
+			foreach ( $this->_get_setting_list() as $name => $option ) {
 				$this->update_setting( $name, $option );
 			}
 			$this->app->add_message( 'Settings have been updated.', 'setting' );
 		} else {
 			$this->pre_delete();
-			foreach ( $this->get_setting_list() as $name => $option ) {
+			foreach ( $this->_get_setting_list() as $name => $option ) {
 				$this->app->option->delete( $this->get_filter_prefix() . $name );
 				$this->delete_hook_cache( $name );
 			}
@@ -82,11 +95,7 @@ trait Dashboard {
 	 */
 	protected function get_view_args() {
 		$args = [];
-		foreach ( $this->get_setting_list() as $name => $option ) {
-			if ( is_int( $name ) && is_string( $option ) ) {
-				$name   = $option;
-				$option = [];
-			}
+		foreach ( $this->_get_setting_list() as $name => $option ) {
 			$args['settings'][ $name ] = $this->get_view_setting( $name, $option );
 		}
 
@@ -117,26 +126,27 @@ trait Dashboard {
 		$detail['title'] = $this->translate( $detail['label'] );
 		$detail['label'] = $detail['title'];
 
-		$detail = $this->get_type_setting( $this->app->array->get( $detail, 'type' ), $detail, $option );
-		$detail = $this->get_form_setting( $this->app->array->get( $detail, 'form' ), $detail, $option );
+		$detail = $this->get_type_setting( $name, $this->app->array->get( $detail, 'type' ), $detail, $option );
+		$detail = $this->get_form_setting( $name, $this->app->array->get( $detail, 'form' ), $detail, $option );
 
-		return $detail;
+		return $this->filter_view_setting( $detail, $name, $option );
 	}
 
 	/**
+	 * @param string $name
 	 * @param string $type
 	 * @param array $detail
 	 * @param array $option
 	 *
 	 * @return array
 	 */
-	protected function get_type_setting( $type, array $detail, array $option ) {
+	protected function get_type_setting( $name, $type, array $detail, array $option ) {
 		if ( $type === 'bool' ) {
 			if ( $detail['value'] ) {
 				$detail['checked'] = true;
 			}
 			$detail['value'] = 1;
-			$detail['label'] = $this->translate( 'Yes' );
+			$detail['label'] = $this->translate( $this->get_checkbox_label( $name, $option ) );
 
 			return $detail;
 		}
@@ -155,10 +165,24 @@ trait Dashboard {
 			isset( $max ) and $detail['attributes']['max'] = $max;
 		}
 
-		return $this->filter_type_setting( $type, $detail, $option );
+		return $this->filter_type_setting( $name, $type, $detail, $option );
 	}
 
 	/**
+	 * @param string $name
+	 * @param array $option
+	 *
+	 * @return string
+	 */
+	protected function get_checkbox_label(
+		/** @noinspection PhpUnusedParameterInspection */
+		$name, array $option
+	) {
+		return $this->app->array->get( $option, 'checkbox_label', 'Yes' );
+	}
+
+	/**
+	 * @param string $name
 	 * @param string $type
 	 * @param array $detail
 	 * @param array $option
@@ -167,19 +191,20 @@ trait Dashboard {
 	 */
 	protected function filter_type_setting(
 		/** @noinspection PhpUnusedParameterInspection */
-		$type, array $detail, array $option
+		$name, $type, array $detail, array $option
 	) {
 		return $detail;
 	}
 
 	/**
-	 * @param $form
+	 * @param string $name
+	 * @param string $form
 	 * @param array $detail
 	 * @param array $option
 	 *
 	 * @return array
 	 */
-	protected function get_form_setting( $form, array $detail, array $option ) {
+	protected function get_form_setting( $name, $form, array $detail, array $option ) {
 		if ( 'select' === $form ) {
 			$value              = $detail['value'];
 			$options            = $this->app->array->get( $option, 'options', [] );
@@ -199,10 +224,11 @@ trait Dashboard {
 			$detail['name']     .= '[]';
 		}
 
-		return $this->filter_form_setting( $form, $detail, $option );
+		return $this->filter_form_setting( $name, $form, $detail, $option );
 	}
 
 	/**
+	 * @param string $name
 	 * @param string $form
 	 * @param array $detail
 	 * @param array $option
@@ -211,7 +237,21 @@ trait Dashboard {
 	 */
 	protected function filter_form_setting(
 		/** @noinspection PhpUnusedParameterInspection */
-		$form, array $detail, array $option
+		$name, $form, array $detail, array $option
+	) {
+		return $detail;
+	}
+
+	/**
+	 * @param array $detail
+	 * @param string $name
+	 * @param array $option
+	 *
+	 * @return array
+	 */
+	protected function filter_view_setting(
+		/** @noinspection PhpUnusedParameterInspection */
+		array $detail, $name, array $option
 	) {
 		return $detail;
 	}
