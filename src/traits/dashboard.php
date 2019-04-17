@@ -2,7 +2,7 @@
 /**
  * WP_Framework_Admin Traits Dashboard
  *
- * @version 0.0.24
+ * @version 0.0.25
  * @author Technote
  * @copyright Technote All Rights Reserved
  * @license http://www.opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2
@@ -126,10 +126,25 @@ trait Dashboard {
 		$detail['title'] = $this->translate( $detail['label'] );
 		$detail['label'] = $detail['title'];
 
+		$detail = $this->filter_detail( $detail, $name, $option );
 		$detail = $this->get_type_setting( $name, $this->app->array->get( $detail, 'type' ), $detail, $option );
 		$detail = $this->get_form_setting( $name, $this->app->array->get( $detail, 'form' ), $detail, $option );
 
 		return $this->filter_view_setting( $detail, $name, $option );
+	}
+
+	/**
+	 * @param array $detail
+	 * @param string $name
+	 * @param array $option
+	 *
+	 * @return array
+	 */
+	protected function filter_detail(
+		/** @noinspection PhpUnusedParameterInspection */
+		$detail, $name, array $option
+	) {
+		return $detail;
 	}
 
 	/**
@@ -148,7 +163,7 @@ trait Dashboard {
 			$detail['value'] = 1;
 			$detail['label'] = $this->translate( $this->get_checkbox_label( $name, $option ) );
 
-			return $detail;
+			return $this->filter_type_setting( $name, $type, $detail, $option );
 		}
 
 		if ( 'float' === $type ) {
