@@ -38,6 +38,13 @@ class Package_Admin extends Package_Base {
 	/**
 	 * @return bool
 	 */
+	protected function is_valid_translate() {
+		return true;
+	}
+
+	/**
+	 * @return bool
+	 */
 	protected function is_valid_admin() {
 		return true;
 	}
