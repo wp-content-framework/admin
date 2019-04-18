@@ -86,7 +86,7 @@ trait Dashboard {
 	 */
 	protected function post_action() {
 		if ( $this->app->input->post( 'update' ) ) {
-			$this->pre_update();
+			$this->before_update();
 			foreach ( $this->_get_setting_list() as $name => $option ) {
 				$this->update_setting( $name, $option );
 			}
