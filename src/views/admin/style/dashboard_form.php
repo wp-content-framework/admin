@@ -1,6 +1,6 @@
 <?php
 /**
- * WP_Framework_Admin Views Admin Style Dashboard
+ * WP_Framework_Admin Views Admin Style Dashboard_form
  *
  * @version 0.0.26
  * @author Technote
