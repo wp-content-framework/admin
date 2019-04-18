@@ -91,27 +91,43 @@ trait Dashboard {
 				$this->update_setting( $name, $option );
 			}
 			$this->app->add_message( 'Settings have been updated.', 'setting' );
+			$this->after_update();
 		} else {
-			$this->pre_delete();
+			$this->before_delete();
 			foreach ( $this->_get_setting_list() as $name => $option ) {
 				$this->app->option->delete( $this->get_filter_prefix() . $name );
 				$this->delete_hook_cache( $name );
 			}
 			$this->app->add_message( 'Settings have been reset.', 'setting' );
+			$this->after_delete();
 		}
 	}
 
 	/**
-	 * pre update
+	 * before update
 	 */
-	protected function pre_update() {
+	protected function before_update() {
 
 	}
 
 	/**
-	 * pre delete
+	 * after update
 	 */
-	protected function pre_delete() {
+	protected function after_update() {
+
+	}
+
+	/**
+	 * before delete
+	 */
+	protected function before_delete() {
+
+	}
+
+	/**
+	 * after delete
+	 */
+	protected function after_delete() {
 
 	}
 
