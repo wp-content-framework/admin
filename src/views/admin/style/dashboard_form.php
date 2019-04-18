@@ -13,6 +13,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
 /** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
+/** @var array $tabs */
 ?>
 <style>
     #<?php $instance->id(); ?>-dashboard {
@@ -20,4 +21,25 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
         margin: 15px 10px;
         width: 100%;
     }
+
+    <?php if (! empty( $tabs ) && is_array( $tabs )):?>
+    #<?php $instance->id(); ?>-content-wrap .nav-tab-wrapper {
+        margin-right: 5%;
+    }
+
+    #<?php $instance->id(); ?>-tab-content-wrap {
+        margin: 10px;
+    }
+
+    .<?php $instance->id(); ?>-tab-content {
+        display: none;
+        font-size: 1em;
+        margin: 25px 25px 25px 10px;
+    }
+
+    .<?php $instance->id(); ?>-tab-content.active {
+        display: block;
+    }
+
+    <?php endif;?>
 </style>

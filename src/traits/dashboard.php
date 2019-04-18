@@ -44,6 +44,13 @@ trait Dashboard {
 	protected abstract function get_setting_list();
 
 	/**
+	 * @return bool|array
+	 */
+	protected function get_tabs() {
+		return false;
+	}
+
+	/**
 	 * @return \Generator
 	 */
 	private function _get_setting_list() {
@@ -54,6 +61,24 @@ trait Dashboard {
 			}
 			yield $name => $option;
 		}
+	}
+
+	/**
+	 * @return array|bool
+	 */
+	private function _get_tabs() {
+		$tabs = $this->get_tabs();
+		if ( ! is_array( $tabs ) ) {
+			return false;
+		}
+		$tabs = $this->app->array->filter( $tabs, function ( $tab ) {
+			return isset( $tab['name'] ) && is_string( $tab['name'] ) && ( ! isset( $tab['items'] ) || is_array( $tab['items'] ) );
+		} );
+		if ( empty( $tabs ) ) {
+			return false;
+		}
+
+		return $tabs;
 	}
 
 	/**
@@ -99,7 +124,34 @@ trait Dashboard {
 			$args['settings'][ $name ] = $this->get_view_setting( $name, $option );
 		}
 
+		$tabs = $this->_get_tabs();
+		if ( is_array( $tabs ) ) {
+			$args = $this->setup_tabs( $args, $tabs );
+		}
+
 		return $this->filter_view_args( $args );
+	}
+
+	/**
+	 * @param array $args
+	 * @param array $tabs
+	 *
+	 * @return array
+	 */
+	protected function setup_tabs( array $args, array $tabs ) {
+		$args['tabs']         = $this->app->array->map( $tabs, function ( $value ) {
+			return $value['name'];
+		} );
+		$args['tab_settings'] = $this->app->array->map( $tabs, function ( $value ) use ( $args ) {
+			return $this->app->array->combine( $this->app->array->filter( $this->app->array->map( $value['items'], function ( $value ) use ( $args ) {
+				return is_string( $value ) ? $this->app->array->get( $args['settings'], $value ) : false;
+			} ), function ( $value ) {
+				return is_array( $value );
+			} ), 'key' );
+		} );
+		unset( $args['settings'] );
+
+		return $args;
 	}
 
 	/**
