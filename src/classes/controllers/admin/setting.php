@@ -44,7 +44,7 @@ class Setting extends Base {
 				$this->app->option->set_post_value( $this->app->array->get( $this->app->setting->get_setting( $setting, true ), 'name', '' ) );
 			}
 		}
-		$this->app->add_message( 'Settings updated.', 'setting' );
+		$this->app->add_message( 'Settings have been updated.', 'setting' );
 	}
 
 	/**
