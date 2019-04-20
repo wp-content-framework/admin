@@ -107,7 +107,10 @@ trait Dashboard {
 	 * before update
 	 */
 	protected function before_update() {
-
+		// support v0.0.24 - v0.0.27
+		if ( method_exists( $this, 'pre_update' ) ) {
+			$this->pre_update();
+		}
 	}
 
 	/**
