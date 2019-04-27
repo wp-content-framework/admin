@@ -18,15 +18,6 @@ return [
 	// main menu title
 	'main_menu_title'                => '',
 
-	// contact url
-	'contact_url'                    => '',
-
-	// twitter
-	'twitter'                        => '',
-
-	// github
-	'github'                         => '',
-
 	// menu image url
 	'menu_image'                     => '',
 
@@ -41,12 +32,6 @@ return [
 
 	// setting page slug
 	'setting_page_slug'              => 'setting',
-
-	// detail url
-	'detail_url'                     => '',
-
-	// github repo (user/repo)
-	'github_repo'                    => '',
 
 	// action links
 	'action_links'                   => [
@@ -65,4 +50,18 @@ return [
 	// plugin row meta
 	'plugin_row_meta'                => [],
 
+	// twitter
+	'twitter'                        => '',
+
+	// detail url
+	'detail_url'                     => '',
+
+	// github repo (user/repo)
+	'github_repo'                    => '',
+
+	// contact url
+	'contact_url'                    => '',
+
+	// github
+	'github'                         => '',
 ];

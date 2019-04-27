@@ -24,9 +24,6 @@
 |設定値|説明|
 |---|---|
 |main_menu_title|管理画面のメニュー名（空でプラグイン名） \[default = '']|
-|twitter|ツイッターのアカウントを指定（ダッシュボードでヘルプに表示されます。空で未使用） \[default = '']|
-|github|Githubのアカウントを指定（ダッシュボードでヘルプに表示されます。空で未使用） \[default = '']|
-|contact_url|プラグインのお問い合わせ用のページのURLを指定（ダッシュボードでヘルプに表示されます。空で未使用） \[default = '']|
 |menu_image|管理画面のメニューアイコンを指定（空で歯車マーク） \[default = '']|
 |suppress_setting_help_contents|ヘルプを非表示にするかどうかを設定 \[default = false]|
 |setting_page_title|管理画面のメニューのタイトル \[default = Dashboard]|
@@ -34,6 +31,11 @@
 |setting_page_slug|管理画面のメニューのslug \[default = setting]|
 |action_links|アクションリンクの追加|
 |plugin_row_meta|プラグイン情報リンクの追加|
+|twitter|ツイッターのアカウントを指定（ダッシュボード 及び ヘルプに表示されます。空で未使用） \[default = '']|
+|detail_url|詳細リンクを指定（ダッシュボードに表示されます。空で未使用） \[default = '']|
+|github_repo|Githubのリポジトリを指定（ダッシュボードに表示されます。空で未使用） \[default = '']|
+|contact_url|プラグインのお問い合わせ用のページのURLを指定（ダッシュボードのヘルプに表示されます。空で未使用） \[default = '']|
+|github|Githubのアカウントを指定（ダッシュボードのヘルプに表示されます。空で未使用） \[default = '']|
 
 ## 画面の追加
 
