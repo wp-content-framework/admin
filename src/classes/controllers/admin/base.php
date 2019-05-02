@@ -11,6 +11,11 @@
 
 namespace WP_Framework_Admin\Classes\Controllers\Admin;
 
+use WP_Framework_Admin\Traits\Admin;
+use WP_Framework_Admin\Traits\Package;
+use WP_Framework_Core\Traits\Nonce;
+use WP_Screen;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	exit;
 }
@@ -21,7 +26,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
  */
 abstract class Base extends \WP_Framework_Controller\Classes\Controllers\Base implements \WP_Framework_Core\Interfaces\Nonce, \WP_Framework_Admin\Interfaces\Admin {
 
-	use \WP_Framework_Admin\Traits\Admin, \WP_Framework_Core\Traits\Nonce, \WP_Framework_Admin\Traits\Package;
+	use Admin, Nonce, Package;
 
 	/**
 	 * @var string $_relative_namespace
@@ -172,7 +177,7 @@ abstract class Base extends \WP_Framework_Controller\Classes\Controllers\Base im
 		$slug     = $this->get_page_slug();
 		$contents = $this->apply_filters( 'get_help_contents', $this->get_help_contents(), $slug );
 		if ( ! empty( $contents ) && is_array( $contents ) ) {
-			/** @var \WP_Screen|null $current_screen */
+			/** @var WP_Screen|null $current_screen */
 			$current_screen = get_current_screen();
 			if ( isset( $current_screen ) ) {
 				$index = 0;

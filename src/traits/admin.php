@@ -11,6 +11,8 @@
 
 namespace WP_Framework_Admin\Traits;
 
+use WP_Framework;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	exit;
 }
@@ -18,7 +20,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 /**
  * Trait Admin
  * @package WP_Framework_Admin\Traits
- * @property \WP_Framework $app
+ * @property WP_Framework $app
  */
 trait Admin {
 

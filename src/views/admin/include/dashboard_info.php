@@ -9,10 +9,12 @@
  * @link https://technote.space
  */
 
+use WP_Framework_Presenter\Interfaces\Presenter;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
-/** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
+/** @var Presenter $instance */
 /** @var array $args */
 $detail_url = $instance->app->get_config( 'config', 'detail_url' );
 $twitter    = $instance->app->get_config( 'config', 'twitter' );
@@ -44,7 +46,7 @@ $instance->add_style_view( 'admin/style/dashboard_info' );
                                 class="twitter-mention-button" data-lang="ja"
                                 data-related="<?php $instance->h( $twitter ); ?>">Tweet to @<?php $instance->h( $twitter ); ?></a>
                         <script>!function (d, s, id) {
-                                var js, fjs = d.getElementsByTagName(s)[0];
+                                let js, fjs = d.getElementsByTagName(s)[0];
                                 if (!d.getElementById(id)) {
                                     js = d.createElement(s);
                                     js.id = id;

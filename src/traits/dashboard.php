@@ -11,6 +11,11 @@
 
 namespace WP_Framework_Admin\Traits;
 
+use Generator;
+use WP_Framework;
+use WP_Framework_Core\Traits\Singleton;
+use WP_Framework_Presenter\Traits\Presenter;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	exit;
 }
@@ -18,9 +23,9 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 /**
  * Trait Dashboard
  * @package WP_Framework_Admin\Traits
- * @property \WP_Framework $app
- * @mixin \WP_Framework_Core\Traits\Singleton
- * @mixin \WP_Framework_Presenter\Traits\Presenter
+ * @property WP_Framework $app
+ * @mixin Singleton
+ * @mixin Presenter
  */
 trait Dashboard {
 
@@ -51,7 +56,7 @@ trait Dashboard {
 	}
 
 	/**
-	 * @return \Generator
+	 * @return Generator
 	 */
 	private function _get_setting_list() {
 		foreach ( $this->get_setting_list() as $name => $option ) {

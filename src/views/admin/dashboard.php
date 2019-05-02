@@ -9,10 +9,12 @@
  * @link https://technote.space
  */
 
+use WP_Framework_Presenter\Interfaces\Presenter;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
-/** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
+/** @var Presenter $instance */
 /** @var array $args */
 $instance->add_script_view( 'admin/script/dashboard_form', $args );
 $instance->add_style_view( 'admin/style/dashboard_form', $args );

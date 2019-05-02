@@ -9,6 +9,8 @@
  * @link https://technote.space
  */
 
+use WP_Framework_Admin\Classes\Models\Admin;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	exit;
 }
@@ -40,7 +42,7 @@ return [
 				/** @noinspection PhpUnusedParameterInspection */
 				$app, $admin, $plugin_data, $context
 			) {
-				/** @var \WP_Framework_Admin\Classes\Models\Admin $admin */
+				/** @var Admin $admin */
 				return menu_page_url( $admin->get_menu_slug(), false );
 			},
 			'label' => 'Settings',

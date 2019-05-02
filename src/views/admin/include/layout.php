@@ -9,12 +9,15 @@
  * @link https://technote.space
  */
 
+use WP_Framework_Presenter\Interfaces\Presenter;
+use WP_Framework_Admin\Classes\Controllers\Admin\Base;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
-/** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
+/** @var Presenter $instance */
+/** @var Base $page */
 /** @var string $slug */
-/** @var \WP_Framework_Admin\Classes\Controllers\Admin\Base $page */
 $instance->add_style_view( 'admin/style/button' );
 ?>
 <div class="wrap <?php $instance->id(); ?>-wrap">

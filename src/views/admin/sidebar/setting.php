@@ -9,10 +9,12 @@
  * @link https://technote.space
  */
 
+use WP_Framework_Presenter\Interfaces\Presenter;
+
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
-/** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
+/** @var Presenter $instance */
 $contact = $instance->app->get_config( 'config', 'contact_url' );
 $twitter = $instance->app->get_config( 'config', 'twitter' );
 $github  = $instance->app->get_config( 'config', 'github' );
