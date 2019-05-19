@@ -2,7 +2,7 @@
 /**
  * WP_Framework_Admin Views Admin Setting
  *
- * @version 0.0.8
+ * @version 0.0.32
  * @author Technote
  * @copyright Technote All Rights Reserved
  * @license http://www.opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2
@@ -37,7 +37,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 		<?php foreach ( $settings as $group => $group_settings ): ?>
             <tr>
             <td rowspan="<?php $instance->n( $group_settings ); ?>"
-                class="<?php $instance->id(); ?>-td-<?php $instance->h( $n ++ % 2 ); ?>">
+                class="<?php $instance->id(); ?>-td-<?php $instance->h( $n++ % 2 ); ?>">
 				<?php $instance->h( $group, true ); ?>
             </td>
 			<?php if ( empty( $group_settings ) ): ?>
@@ -45,7 +45,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 			<?php else: ?>
 				<?php $m = 0; ?>
 				<?php foreach ( $group_settings as $setting => $detail ): ?>
-					<?php if ( $m ++ > 0 ): ?>
+					<?php if ( $m++ > 0 ): ?>
                         <tr>
 					<?php endif; ?>
                     <td>
