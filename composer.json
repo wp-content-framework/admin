@@ -21,5 +21,12 @@
   },
   "autoload": {
   },
-  "license": "GPL-2.0+"
+  "license": "GPL-2.0+",
+  "scripts": {
+    "packages": [
+      "rm -rdf vendor",
+      "rm -f composer.lock",
+      "composer require wp-content-framework/controller wp-content-framework/view"
+    ]
+  }
 }
