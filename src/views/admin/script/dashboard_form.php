@@ -62,7 +62,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 			const hash = location.hash;
 			let tab;
 			if ( hash ) {
-				tab = $( '[data-target="' + location.hash.replace( /^#/, '' ) + '"]' ).eq( 0 );
+				tab = $( '[data-target="' + location.hash.replace( /\A#/, '' ) + '"]' ).eq( 0 );
 				if ( tab.length <= 0 ) {
 					tab = null;
 				}
