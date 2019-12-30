@@ -42,7 +42,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 				} );
 			}
 
-			<?php if (! empty( $tabs ) && is_array( $tabs )):?>
+			<?php if ( ! empty( $tabs ) && is_array( $tabs ) ) :?>
 			$( '#<?php $instance->id(); ?>-dashboard .nav-tab' ).on( 'click', function () {
 				const page = $( this ).data( 'target_page' );
 				if ( page ) {
@@ -62,7 +62,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 			const hash = location.hash;
 			let tab;
 			if ( hash ) {
-				tab = $( '[data-target="' + location.hash.replace( /^#/, '' ) + '"]' ).eq( 0 );
+				tab = $( '[data-target="' + location.hash.replace( /\A#/, '' ) + '"]' ).eq( 0 );
 				if ( tab.length <= 0 ) {
 					tab = null;
 				}

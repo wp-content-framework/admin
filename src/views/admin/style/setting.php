@@ -18,7 +18,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 $instance->add_style_view( 'admin/style/table' );
 ?>
 <style>
-    #<?php $instance->id();?>-main-contents table .<?php $instance->id(); ?>-setting-detail {
-        float: right;
-    }
+	#<?php $instance->id();?>-main-contents table .<?php $instance->id(); ?>-setting-detail {
+		float: right;
+	}
 </style>

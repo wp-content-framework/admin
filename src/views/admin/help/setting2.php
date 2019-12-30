@@ -19,9 +19,9 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 ?>
 
 <ol>
-    <li>
-        <h4>ヘルプの抑制設定の追加</h4>
-        configs/config.php に以下の設定を追加します。
-        <pre>'suppress_setting_help_contents' => true</pre>
-    </li>
+	<li>
+		<h4>ヘルプの抑制設定の追加</h4>
+		configs/config.php に以下の設定を追加します。
+		<pre>'suppress_setting_help_contents' => true</pre>
+	</li>
 </ol>

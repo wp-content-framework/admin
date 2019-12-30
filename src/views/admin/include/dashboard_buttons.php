@@ -18,14 +18,14 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 /** @var array $args */
 ?>
 <div class="form-buttons">
-	<?php if ( empty( $args['no_update_button'] ) ): ?>
+	<?php if ( empty( $args['no_update_button'] ) ) : ?>
 		<?php $instance->form( 'input/submit', $args, [
 			'name'  => 'update',
 			'value' => 'Update',
 			'class' => 'button-primary large',
 		] ); ?>
 	<?php endif; ?>
-	<?php if ( empty( $args['no_reset_button'] ) ): ?>
+	<?php if ( empty( $args['no_reset_button'] ) ) : ?>
 		<?php $instance->form( 'input/button', $args, [
 			'name'  => 'reset',
 			'value' => 'Reset',

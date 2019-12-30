@@ -17,20 +17,20 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 /** @var Presenter $instance */
 ?>
 <style>
-    #<?php $instance->id();?>-main-contents .button-primary {
-        margin-top: 5px;
-        min-width: 80px;
-    }
+	#<?php $instance->id();?>-main-contents .button-primary {
+		margin-top: 5px;
+		min-width: 80px;
+	}
 
-    #<?php $instance->id();?>-main-contents .button-primary.right {
-        float: right;
-    }
+	#<?php $instance->id();?>-main-contents .button-primary.right {
+		float: right;
+	}
 
-    #<?php $instance->id();?>-main-contents .button-primary.small {
-        min-width: 40px;
-    }
+	#<?php $instance->id();?>-main-contents .button-primary.small {
+		min-width: 40px;
+	}
 
-    #<?php $instance->id();?>-main-contents .button-primary.large {
-        min-width: 120px;
-    }
+	#<?php $instance->id();?>-main-contents .button-primary.large {
+		min-width: 120px;
+	}
 </style>
