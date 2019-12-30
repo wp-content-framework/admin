@@ -1,10 +1,14 @@
 # WP Content Framework (Admin module)
 
+[![CI Status](https://github.com/wp-content-framework/admin/workflows/CI/badge.svg)](https://github.com/wp-content-framework/admin/actions)
 [![License: GPL v2+](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
 [![PHP: >=5.6](https://img.shields.io/badge/PHP-%3E%3D5.6-orange.svg)](http://php.net/)
 [![WordPress: >=3.9.3](https://img.shields.io/badge/WordPress-%3E%3D3.9.3-brightgreen.svg)](https://wordpress.org/)
 
 [WP Content Framework](https://github.com/wp-content-framework/core) のモジュールです。
+
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 # 要件
 - PHP 5.6 以上
@@ -12,14 +16,14 @@
 
 # インストール
 
-``` composer require wp-content-framework/admin ```  
+``` composer require wp-content-framework/admin ```
 
 ## 依存モジュール
-* [controller](https://github.com/wp-content-framework/controller)  
-* [view](https://github.com/wp-content-framework/view)  
+* [controller](https://github.com/wp-content-framework/controller)
+* [view](https://github.com/wp-content-framework/view)
 
 ## 基本設定
-- configs/config.php  
+- configs/config.php
 
 |設定値|説明|
 |---|---|
@@ -64,7 +68,7 @@ class Test extends \WP_Framework\Classes\Controllers\Admin\Base {
 	// POST の時に行う動作
 	protected function post_action() {
 		$aaa = $this->app->input->post( 'aaa' );
-		// ... 
+		// ...
 	}
 
 	// GET, POST 共通で行う動作
@@ -165,5 +169,5 @@ test
 
 # Author
 
-[GitHub (Technote)](https://github.com/technote-space)  
+[GitHub (Technote)](https://github.com/technote-space)
 [Blog](https://technote.space)
