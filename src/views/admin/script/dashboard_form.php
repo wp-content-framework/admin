@@ -42,7 +42,7 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 				} );
 			}
 
-			<?php if (! empty( $tabs ) && is_array( $tabs )):?>
+			<?php if ( ! empty( $tabs ) && is_array( $tabs ) ) :?>
 			$( '#<?php $instance->id(); ?>-dashboard .nav-tab' ).on( 'click', function () {
 				const page = $( this ).data( 'target_page' );
 				if ( page ) {

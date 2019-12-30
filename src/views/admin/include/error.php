@@ -18,11 +18,11 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 /** @var string $message */
 ?>
 <div class="wrap cf-wrap">
-    <div class="icon32 icon32-error"><br/></div>
-    <h2>Error</h2>
-    <div class="error">
-        <p>
+	<div class="icon32 icon32-error"><br/></div>
+	<h2>Error</h2>
+	<div class="error">
+		<p>
 			<?php $instance->h( $message, true ); ?>
-        </p>
-    </div>
+		</p>
+	</div>
 </div>

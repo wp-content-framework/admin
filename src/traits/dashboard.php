@@ -46,7 +46,7 @@ trait Dashboard {
 	/**
 	 * @return array
 	 */
-	protected abstract function get_setting_list();
+	abstract protected function get_setting_list();
 
 	/**
 	 * @return bool|array
@@ -58,7 +58,7 @@ trait Dashboard {
 	/**
 	 * @return Generator
 	 */
-	private function _get_setting_list() {
+	private function get_use_setting_list() {
 		foreach ( $this->get_setting_list() as $name => $option ) {
 			if ( is_int( $name ) && is_string( $option ) ) {
 				$name   = $option;
@@ -71,7 +71,7 @@ trait Dashboard {
 	/**
 	 * @return array|bool
 	 */
-	private function _get_tabs() {
+	private function get_use_tabs() {
 		$tabs = $this->get_tabs();
 		if ( ! is_array( $tabs ) ) {
 			return false;
@@ -92,14 +92,14 @@ trait Dashboard {
 	protected function post_action() {
 		if ( $this->app->input->post( 'update' ) ) {
 			$this->before_update();
-			foreach ( $this->_get_setting_list() as $name => $option ) {
+			foreach ( $this->get_use_setting_list() as $name => $option ) {
 				$this->update_setting( $name, $option );
 			}
 			$this->app->add_message( 'Settings have been updated.', 'setting' );
 			$this->after_update();
 		} else {
 			$this->before_delete();
-			foreach ( $this->_get_setting_list() as $name => $option ) {
+			foreach ( $this->get_use_setting_list() as $name => $option ) {
 				$this->app->option->delete( $this->get_filter_prefix() . $name );
 				$this->delete_hook_cache( $name );
 			}
@@ -122,21 +122,18 @@ trait Dashboard {
 	 * after update
 	 */
 	protected function after_update() {
-
 	}
 
 	/**
 	 * before delete
 	 */
 	protected function before_delete() {
-
 	}
 
 	/**
 	 * after delete
 	 */
 	protected function after_delete() {
-
 	}
 
 	/**
@@ -144,11 +141,11 @@ trait Dashboard {
 	 */
 	protected function get_view_args() {
 		$args = [];
-		foreach ( $this->_get_setting_list() as $name => $option ) {
+		foreach ( $this->get_use_setting_list() as $name => $option ) {
 			$args['settings'][ $name ] = $this->get_view_setting( $name, $option );
 		}
 
-		$tabs = $this->_get_tabs();
+		$tabs = $this->get_use_tabs();
 		if ( is_array( $tabs ) ) {
 			$args = $this->setup_tabs( $args, $tabs );
 		}
@@ -167,11 +164,17 @@ trait Dashboard {
 			return $value['name'];
 		} );
 		$args['tab_settings'] = $this->app->array->map( $tabs, function ( $value ) use ( $args ) {
-			return $this->app->array->combine( $this->app->array->filter( $this->app->array->map( $value['items'], function ( $value ) use ( $args ) {
-				return is_string( $value ) ? $this->app->array->get( $args['settings'], $value ) : false;
-			} ), function ( $value ) {
-				return is_array( $value );
-			} ), 'key' );
+			return $this->app->array->combine( $this->app->array->filter(
+				$this->app->array->map(
+					$value['items'],
+					function ( $value ) use ( $args ) {
+						return is_string( $value ) ? $this->app->array->get( $args['settings'], $value ) : false;
+					}
+				),
+				function ( $value ) {
+					return is_array( $value );
+				}
+			), 'key' );
 		} );
 		unset( $args['settings'] );
 
@@ -215,6 +218,7 @@ trait Dashboard {
 	 * @param array $option
 	 *
 	 * @return array
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	protected function filter_detail(
 		/** @noinspection PhpUnusedParameterInspection */
@@ -232,7 +236,7 @@ trait Dashboard {
 	 * @return array
 	 */
 	protected function get_type_setting( $name, $type, array $detail, array $option ) {
-		if ( $type === 'bool' ) {
+		if ( 'bool' === $type ) {
 			if ( $detail['value'] ) {
 				$detail['checked'] = true;
 			}
@@ -252,8 +256,12 @@ trait Dashboard {
 			$max = $this->app->array->get( $option, 'max', function () use ( $detail ) {
 				return $this->app->array->get( $detail, 'max' );
 			} );
-			isset( $min ) and $detail['attributes']['min'] = $min;
-			isset( $max ) and $detail['attributes']['max'] = $max;
+			if ( isset( $min ) ) {
+				$detail['attributes']['min'] = $min;
+			}
+			if ( isset( $max ) ) {
+				$detail['attributes']['max'] = $max;
+			}
 		}
 
 		return $this->filter_type_setting( $name, $type, $detail, $option );
@@ -264,6 +272,7 @@ trait Dashboard {
 	 * @param array $option
 	 *
 	 * @return string
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	protected function get_checkbox_label(
 		/** @noinspection PhpUnusedParameterInspection */
@@ -279,6 +288,7 @@ trait Dashboard {
 	 * @param array $option
 	 *
 	 * @return array
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	protected function filter_type_setting(
 		/** @noinspection PhpUnusedParameterInspection */
@@ -312,7 +322,7 @@ trait Dashboard {
 			$detail['selected'] = $this->app->string->explode( $value, $this->get_delimiter( $option ) );
 			$detail['options']  = $options;
 			$detail['size']     = count( $options );
-			$detail['name']     .= '[]';
+			$detail['name']     = $detail['name'] . '[]';
 		}
 
 		return $this->filter_form_setting( $name, $form, $detail, $option );
@@ -325,6 +335,7 @@ trait Dashboard {
 	 * @param array $option
 	 *
 	 * @return array
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	protected function filter_form_setting(
 		/** @noinspection PhpUnusedParameterInspection */
@@ -339,6 +350,7 @@ trait Dashboard {
 	 * @param array $option
 	 *
 	 * @return array
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	protected function filter_view_setting(
 		/** @noinspection PhpUnusedParameterInspection */

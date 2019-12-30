@@ -17,28 +17,28 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 /** @var Presenter $instance */
 ?>
 <style>
-    #<?php $instance->id(); ?>-info-wrap {
-        display: table-cell;
-        width: 10%;
-        vertical-align: top;
-    }
+	#<?php $instance->id(); ?>-info-wrap {
+		display: table-cell;
+		width: 10%;
+		vertical-align: top;
+	}
 
-    #<?php $instance->id(); ?>-info-wrap .inner {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background: #f5f5f5;
-    }
+	#<?php $instance->id(); ?>-info-wrap .inner {
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		background: #f5f5f5;
+	}
 
-    #<?php $instance->id(); ?>-info-wrap .box {
-        margin: 20px 0;
-    }
+	#<?php $instance->id(); ?>-info-wrap .box {
+		margin: 20px 0;
+	}
 
-    #<?php $instance->id(); ?>-info-wrap .box .title {
-        margin: 5px 0;
-    }
+	#<?php $instance->id(); ?>-info-wrap .box .title {
+		margin: 5px 0;
+	}
 
-    #<?php $instance->id(); ?>-info-wrap .box a {
-        white-space: nowrap;
-    }
+	#<?php $instance->id(); ?>-info-wrap .box a {
+		white-space: nowrap;
+	}
 </style>

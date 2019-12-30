@@ -18,11 +18,11 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 ?>
 
 <ol>
-    <li>
-        <h4>サイドバー設定</h4>
-        view を指定します。
-        functions.php に以下のようなコードを追加します。
-        <pre>
+	<li>
+		<h4>サイドバー設定</h4>
+		view を指定します。
+		functions.php に以下のようなコードを追加します。
+		<pre>
 add_filter( '<?php $instance->h( $prefix ); ?>get_help_sidebar', function ( $sidebar, $slug ) {
 	if ( 'setting' === $slug ) {
 		return 'setting';
@@ -30,21 +30,21 @@ add_filter( '<?php $instance->h( $prefix ); ?>get_help_sidebar', function ( $sid
 
 	return $contents;
 }, 10, 2 );</pre>
-        設定値は適宜変更します。
-    </li>
-    <li>
-        <h4>viewファイルの作成</h4>
-        設定で指定したviewを「views/admin/sidebar」に作成します。<br>
-        上の例では「views/admin/sidebar/setting.php」を作成します。<br>
-        <pre>
-<<<?php ?>?>?php
+		設定値は適宜変更します。
+	</li>
+	<li>
+		<h4>viewファイルの作成</h4>
+		設定で指定したviewを「views/admin/sidebar」に作成します。<br>
+		上の例では「views/admin/sidebar/setting.php」を作成します。<br>
+		<pre>
+<<<?php true; ?>?>?php
 if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 	return;
 }
 /** @var \WP_Framework_Presenter\Interfaces\Presenter $instance */
 ?>
-<<<?php ?>?>div>
-    Hello World!
-<<<?php ?>?>/div></pre>
-    </li>
+<<<?php true; ?>?>div>
+	Hello World!
+<<<?php true; ?>?>/div></pre>
+	</li>
 </ol>

@@ -24,19 +24,19 @@ if ( empty( $contact ) && empty( $twitter ) && empty( $github ) ) {
 ?>
 
 <ul>
-	<?php if ( ! empty( $contact ) ): ?>
-        <li>
+	<?php if ( ! empty( $contact ) ) : ?>
+		<li>
 			<?php $instance->url( $contact, 'Contact', true, true ); ?>
-        </li>
+		</li>
 	<?php endif; ?>
-	<?php if ( ! empty( $twitter ) ): ?>
-        <li>
+	<?php if ( ! empty( $twitter ) ) : ?>
+		<li>
 			<?php $instance->url( 'https://twitter.com/' . $twitter, 'Twitter', true, true ); ?>
-        </li>
+		</li>
 	<?php endif; ?>
-	<?php if ( ! empty( $github ) ): ?>
-        <li>
+	<?php if ( ! empty( $github ) ) : ?>
+		<li>
 			<?php $instance->url( 'https://github.com/' . $github, 'Github', true, true ); ?>
-        </li>
+		</li>
 	<?php endif; ?>
 </ul>

@@ -31,35 +31,36 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	use Loader, Presenter, Nonce, Package;
 
 	/**
-	 * @var array $_messages
+	 * @var array $messages
 	 */
-	private $_messages = [];
+	private $messages = [];
 
 	/**
-	 * @var Base[] $_pages
+	 * @var Base[] $pages
 	 */
-	private $_pages = [];
+	private $pages = [];
 
 	/**
-	 * @var Base[] $_hooks
+	 * @var Base[] $hooks
 	 */
-	private $_hooks = [];
+	private $hooks = [];
 
 	/**
 	 * add menu
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function add_menu() {
 		$capability = $this->app->get_config( 'capability', 'admin_menu', 'manage_options' );
 		if ( ! $this->app->user_can( $capability ) ) {
 			return;
 		}
 
-		$this->_pages = [];
+		$this->pages = [];
 		foreach ( $this->get_class_list() as $page ) {
 			/** @var Base $page */
 			if ( $this->app->user_can( $this->apply_filters( 'admin_menu_capability', $page->get_capability(), $page ) ) ) {
-				$this->_pages[] = $page;
+				$this->pages[] = $page;
 			}
 		}
 
@@ -77,7 +78,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 		);
 
 		/** @var Base $_page */
-		foreach ( $this->_pages as $_page ) {
+		foreach ( $this->pages as $_page ) {
 			$hook = add_submenu_page(
 				$slug,
 				$this->translate( $_page->get_page_title() ),
@@ -88,27 +89,31 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 					$this->load( $_page );
 				}
 			);
-			false !== $hook && $this->_hooks[ $hook ] = $_page;
+			if ( false !== $hook ) {
+				$this->hooks[ $hook ] = $_page;
+			}
 		}
 	}
 
 	/**
 	 * setup help
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function setup_help() {
 		global $hook_suffix;
-		isset( $this->_hooks[ $hook_suffix ] ) && $this->_hooks[ $hook_suffix ]->setup_help();
+		isset( $this->hooks[ $hook_suffix ] ) && $this->hooks[ $hook_suffix ]->setup_help();
 	}
 
 	/**
 	 * do page action
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function do_page_action() {
 		global $hook_suffix;
-		if ( isset( $this->_hooks[ $hook_suffix ] ) ) {
-			$page = $this->_hooks[ $hook_suffix ];
+		if ( isset( $this->hooks[ $hook_suffix ] ) ) {
+			$page = $this->hooks[ $hook_suffix ];
 			$this->do_action( 'pre_load_admin_page', $page );
 			$page->action();
 			$this->do_action( 'post_load_admin_page', $page );
@@ -117,8 +122,9 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 
 	/**
 	 * sort menu
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function sort_menu() {
 		if ( ! $this->is_valid_package( 'custom_post' ) ) {
 			return;
@@ -130,11 +136,11 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 			return;
 		}
 
-		$pages = $this->app->array->map( $this->_pages, function ( $p ) {
+		$pages = $this->app->array->map( $this->pages, function ( $p ) {
 			/** @var Base $p */
 			return $this->get_page_prefix() . $p->get_page_slug();
 		} );
-		$pages = array_combine( $pages, $this->_pages );
+		$pages = array_combine( $pages, $this->pages );
 
 		/** @var \WP_Framework_Custom_Post\Classes\Models\Custom_Post $custom_post */
 		$custom_post = \WP_Framework_Custom_Post\Classes\Models\Custom_Post::get_instance( $this->app );
@@ -176,12 +182,13 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 
 	/**
 	 * admin notice
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function admin_notice() {
 		if ( $this->app->user_can( $this->app->get_config( 'capability', 'admin_notice_capability', 'manage_options' ) ) ) {
 			$this->get_view( 'admin/include/notice', [
-				'messages' => $this->_messages,
+				'messages' => $this->messages,
 			], true );
 		}
 	}
@@ -193,15 +200,18 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 * @param string $context
 	 *
 	 * @return array
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function plugin_action_links( array $actions, $plugin_file, $plugin_data, $context ) {
 		if ( $this->app->is_theme || $plugin_file !== $this->app->define->plugin_base_name ) {
 			return $actions;
 		}
 
 		$action_links = $this->parse_config_links( $this->app->get_config( 'config', 'action_links' ), $plugin_data, $context );
-		! empty( $action_links ) and $actions = array_merge( $action_links, $actions );
+		if ( ! empty( $action_links ) ) {
+			$actions = array_merge( $action_links, $actions );
+		}
 
 		return $this->apply_filters( 'plugin_action_links', $actions, $plugin_file, $plugin_data, $context );
 	}
@@ -213,15 +223,18 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 * @param string $status
 	 *
 	 * @return array
+	 * @noinspection PhpUnusedPrivateMethodInspection
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
 	 */
-	/** @noinspection PhpUnusedPrivateMethodInspection */
 	private function plugin_row_meta( array $plugin_meta, $plugin_file, $plugin_data, $status ) {
 		if ( $this->app->is_theme || $plugin_file !== $this->app->define->plugin_base_name ) {
 			return $plugin_meta;
 		}
 
 		$plugin_row_meta = $this->parse_config_links( $this->app->get_config( 'config', 'plugin_row_meta' ), $plugin_data, $status );
-		! empty( $plugin_row_meta ) and $plugin_meta = array_merge( $plugin_meta, $plugin_row_meta );
+		if ( ! empty( $plugin_row_meta ) ) {
+			$plugin_meta = array_merge( $plugin_meta, $plugin_row_meta );
+		}
 
 		return $this->apply_filters( 'plugin_row_meta', $plugin_meta, $plugin_file, $plugin_data, $status );
 	}
@@ -270,7 +283,9 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 */
 	private function get_main_menu_title() {
 		$main_menu_title = $this->app->get_config( 'config', 'main_menu_title' );
-		empty( $main_menu_title ) and $main_menu_title = str_replace( '_', ' ', $this->app->original_plugin_name );
+		if ( empty( $main_menu_title ) ) {
+			$main_menu_title = str_replace( '_', ' ', $this->app->original_plugin_name );
+		}
 
 		return $this->apply_filters( 'get_main_menu_title', $this->translate( $main_menu_title ) );
 	}
@@ -285,7 +300,7 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 		$position = $this->apply_filters( 'admin_menu_position' );
 
 		global $menu;
-		if ( isset( $menu["$position"] ) && $this->compare_wp_version( '4.4', '<' ) ) {
+		if ( isset( $menu[ $position . '' ] ) && $this->compare_wp_version( '4.4', '<' ) ) {
 			$position = $position + substr( base_convert( md5( $menu_slug . $menu_title ), 16, 10 ), -5 ) * 0.00001;
 			$position = "$position";
 		}
@@ -343,15 +358,15 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 	 * @param string $group
 	 * @param bool $escape
 	 * @param bool $error
-	 * @param null|array $override_allowed_html
+	 * @param null|array $allowed_html
 	 */
-	public function add_message( $message, $group = '', $error = false, $escape = true, $override_allowed_html = null ) {
+	public function add_message( $message, $group = '', $error = false, $escape = true, $allowed_html = null ) {
 		if ( ! $escape ) {
-			$message = preg_replace_callback( '#\[([^()]+?)\]\s*\((https?://([\w\-]+\.)+[\w\-]+(/[\w\-\./\?%&=\#]*)?)\)#', function ( $matches ) {
+			$message = preg_replace_callback( '#\[([^()]+?)]\s*\((https?://([\w\-]+\.)+[\w\-]+(/[\w\-./?%&=\#]*)?)\)#', function ( $matches ) {
 				return $this->url( $matches[2], $matches[1], false, ! $this->app->utility->is_admin_url( $matches[2] ), [], false );
 			}, $message );
-			$message = $this->app->string->strip_tags( $message, $override_allowed_html );
+			$message = $this->app->string->strip_tags( $message, $allowed_html );
 		}
-		$this->_messages[ $group ][ $error ? 'error' : 'updated' ][] = [ $message, $escape ];
+		$this->messages[ $group ][ $error ? 'error' : 'updated' ][] = [ $message, $escape ];
 	}
 }

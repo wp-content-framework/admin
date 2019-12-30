@@ -29,9 +29,9 @@ abstract class Base extends \WP_Framework_Controller\Classes\Controllers\Base im
 	use Admin, Nonce, Package;
 
 	/**
-	 * @var string $_relative_namespace
+	 * @var string $relative_namespace
 	 */
-	private $_relative_namespace;
+	private $relative_namespace;
 
 	/**
 	 * @return string
@@ -49,41 +49,38 @@ abstract class Base extends \WP_Framework_Controller\Classes\Controllers\Base im
 	 * @param string $relative_namespace
 	 */
 	public function set_relative_namespace( $relative_namespace ) {
-		$this->_relative_namespace = $relative_namespace;
+		$this->relative_namespace = $relative_namespace;
 	}
 
 	/**
 	 * @return string
 	 */
 	public function get_page_slug() {
-		return str_replace( '\\', '-', strtolower( $this->_relative_namespace ) ) . $this->get_file_slug();
+		return str_replace( '\\', '-', strtolower( $this->relative_namespace ) ) . $this->get_file_slug();
 	}
 
 	/**
 	 * get
 	 */
 	protected function get_action() {
-
 	}
 
 	/**
 	 * post
 	 */
 	protected function post_action() {
-
 	}
 
 	/**
 	 * common
 	 */
 	protected function common_action() {
-
 	}
 
 	/**
 	 * action
 	 */
-	public final function action() {
+	final public function action() {
 		$is_valid_update = $this->is_post() && $this->nonce_check();
 		if ( $is_valid_update ) {
 			$this->post_action();
@@ -176,44 +173,65 @@ abstract class Base extends \WP_Framework_Controller\Classes\Controllers\Base im
 	public function setup_help() {
 		$slug     = $this->get_page_slug();
 		$contents = $this->apply_filters( 'get_help_contents', $this->get_help_contents(), $slug );
-		if ( ! empty( $contents ) && is_array( $contents ) ) {
-			/** @var WP_Screen|null $current_screen */
-			$current_screen = get_current_screen();
-			if ( isset( $current_screen ) ) {
-				$index = 0;
-				if ( isset( $contents['content'] ) || isset( $contents['view'] ) ) {
-					$contents = [ $contents ];
-				}
-				foreach ( $contents as $content ) {
-					if ( ! is_array( $content ) ) {
-						continue;
-					}
+		if ( empty( $contents ) || ! is_array( $contents ) ) {
+			return;
+		}
 
-					$id      = $this->apply_filters( 'help_tag_id', $this->app->array->get( $content, 'id', function () use ( $index ) {
-						return $this->get_help_tab_id( $index );
-					} ), $content, $slug, $index );
-					$title   = $this->apply_filters( 'help_tag_title', $this->app->array->get( $content, 'title', 'Help Tab' ), $content, $slug, $index );
-					$content = $this->apply_filters( 'help_tag_content', $this->app->array->get( $content, 'content', function () use ( $content ) {
-						return $this->get_help_content( $this->app->array->get( $content, 'view' ) );
-					} ), $content, $slug, $index );
+		/** @var WP_Screen|null $current_screen */
+		$current_screen = get_current_screen();
+		if ( ! isset( $current_screen ) ) {
+			return;
+		}
 
-					if ( ! empty( $content ) ) {
-						$current_screen->add_help_tab( [
-							'id'      => $id,
-							'title'   => $this->translate( $title ),
-							'content' => $content,
-						] );
-					}
-					$index++;
-				}
+		if ( isset( $contents['content'] ) || isset( $contents['view'] ) ) {
+			$contents = [ $contents ];
+		}
 
-				$sidebar = $this->apply_filters( 'get_help_sidebar', $this->get_help_sidebar(), $slug );
-				if ( is_string( $sidebar ) && ! empty( $sidebar ) ) {
-					$content = $this->get_sidebar_content( $sidebar );
-					if ( ! empty( $content ) ) {
-						$current_screen->set_help_sidebar( $content );
-					}
-				}
+		$this->setup_help_contents( $contents, $slug, $current_screen );
+		$this->setup_sidebar( $slug, $current_screen );
+	}
+
+	/**
+	 * @param array $contents
+	 * @param string $slug
+	 * @param WP_Screen $current_screen
+	 */
+	private function setup_help_contents( $contents, $slug, $current_screen ) {
+		$index = 0;
+		foreach ( $contents as $content ) {
+			if ( ! is_array( $content ) ) {
+				continue;
+			}
+
+			$id      = $this->apply_filters( 'help_tag_id', $this->app->array->get( $content, 'id', function () use ( $index ) {
+				return $this->get_help_tab_id( $index );
+			} ), $content, $slug, $index );
+			$title   = $this->apply_filters( 'help_tag_title', $this->app->array->get( $content, 'title', 'Help Tab' ), $content, $slug, $index );
+			$content = $this->apply_filters( 'help_tag_content', $this->app->array->get( $content, 'content', function () use ( $content ) {
+				return $this->get_help_content( $this->app->array->get( $content, 'view' ) );
+			} ), $content, $slug, $index );
+
+			if ( ! empty( $content ) ) {
+				$current_screen->add_help_tab( [
+					'id'      => $id,
+					'title'   => $this->translate( $title ),
+					'content' => $content,
+				] );
+			}
+			$index++;
+		}
+	}
+
+	/**
+	 * @param string $slug
+	 * @param WP_Screen $current_screen
+	 */
+	private function setup_sidebar( $slug, $current_screen ) {
+		$sidebar = $this->apply_filters( 'get_help_sidebar', $this->get_help_sidebar(), $slug );
+		if ( is_string( $sidebar ) && ! empty( $sidebar ) ) {
+			$content = $this->get_sidebar_content( $sidebar );
+			if ( ! empty( $content ) ) {
+				$current_screen->set_help_sidebar( $content );
 			}
 		}
 	}

@@ -17,16 +17,16 @@ if ( ! defined( 'WP_CONTENT_FRAMEWORK' ) ) {
 /** @var Presenter $instance */
 /** @var array $messages */
 ?>
-<?php if ( ! empty( $messages ) ): ?>
-	<?php foreach ( $messages as $group => $m1 ): ?>
-		<?php foreach ( $m1 as $class => $m2 ): ?>
-            <div class="<?php $instance->h( $class ); ?> <?php $instance->id(); ?>-admin-message">
-                <ul>
-					<?php foreach ( $m2 as list( $m, $escape ) ): ?>
-                        <li><p><?php $instance->h( $m, true, true, $escape ); ?></p></li>
+<?php if ( ! empty( $messages ) ) : ?>
+	<?php foreach ( $messages as $group => $m1 ) : ?>
+		<?php foreach ( $m1 as $class => $m2 ) : ?>
+			<div class="<?php $instance->h( $class ); ?> <?php $instance->id(); ?>-admin-message">
+				<ul>
+					<?php foreach ( $m2 as list( $m, $escape ) ) : ?>
+						<li><p><?php $instance->h( $m, true, true, $escape ); ?></p></li>
 					<?php endforeach; ?>
-                </ul>
-            </div>
+				</ul>
+			</div>
 		<?php endforeach; ?>
 	<?php endforeach; ?>
 <?php endif; ?>
