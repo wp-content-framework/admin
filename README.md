@@ -180,6 +180,5 @@ test
 |new_tab|新しいタブで開くかどうか (bool, optional)|
 
 # Author
-
-[GitHub (Technote)](https://github.com/technote-space)
-[Blog](https://technote.space)
+- [GitHub (Technote)](https://github.com/technote-space)
+- [Blog](https://technote.space)
