@@ -16,8 +16,8 @@
   ],
   "require": {
     "php": ">=5.6.0",
-    "wp-content-framework/controller": "^0.0.5",
-    "wp-content-framework/view": "^0.0.9"
+    "wp-content-framework/controller": "^0.0.6",
+    "wp-content-framework/view": "^0.0.10"
   },
   "autoload": {},
   "license": "GPL-2.0+",
