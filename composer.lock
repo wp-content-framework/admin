@@ -117,16 +117,16 @@
         },
         {
             "name": "wp-content-framework/controller",
-            "version": "v1.0.15",
+            "version": "v1.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/controller.git",
-                "reference": "bad0da3301c2482b8c62825248e74675c55cb85a"
+                "reference": "44e44f8676bf65b36a4a5fe6d8dd8e2172166398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/bad0da3301c2482b8c62825248e74675c55cb85a",
-                "reference": "bad0da3301c2482b8c62825248e74675c55cb85a",
+                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/44e44f8676bf65b36a4a5fe6d8dd8e2172166398",
+                "reference": "44e44f8676bf65b36a4a5fe6d8dd8e2172166398",
                 "shasum": ""
             },
             "require": {
@@ -164,20 +164,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-07-11T14:56:23+00:00"
+            "time": "2020-07-18T15:54:34+00:00"
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.12",
+            "version": "v1.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "ab26ae3b694d8e58be14646b53931ae31cbfdb79"
+                "reference": "8142b27d24d9d1ea6fc71c7ccff62584b098bb07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/ab26ae3b694d8e58be14646b53931ae31cbfdb79",
-                "reference": "ab26ae3b694d8e58be14646b53931ae31cbfdb79",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/8142b27d24d9d1ea6fc71c7ccff62584b098bb07",
+                "reference": "8142b27d24d9d1ea6fc71c7ccff62584b098bb07",
                 "shasum": ""
             },
             "require": {
@@ -215,20 +215,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-07-01T03:56:06+00:00"
+            "time": "2020-07-20T05:21:50+00:00"
         },
         {
             "name": "wp-content-framework/view",
-            "version": "v1.0.14",
+            "version": "v1.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/view.git",
-                "reference": "bc5f2a1ec48269ff707c154079556a097f005f3a"
+                "reference": "2b1104ef60c8716eab68a1f1d3b8f34a2ccbb391"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/bc5f2a1ec48269ff707c154079556a097f005f3a",
-                "reference": "bc5f2a1ec48269ff707c154079556a097f005f3a",
+                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/2b1104ef60c8716eab68a1f1d3b8f34a2ccbb391",
+                "reference": "2b1104ef60c8716eab68a1f1d3b8f34a2ccbb391",
                 "shasum": ""
             },
             "require": {
@@ -266,7 +266,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-07-10T14:50:22+00:00"
+            "time": "2020-07-17T16:10:28+00:00"
         }
     ],
     "packages-dev": [
@@ -1123,16 +1123,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d"
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
-                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/1c302646f6efc070cd46856e600e5e0684d6b454",
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454",
                 "shasum": ""
             },
             "require": {
@@ -1144,7 +1144,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1195,20 +1195,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2"
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/4a5b6bba3259902e386eb80dd1956181ee90b5b2",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/d87d5766cbf48d72388a9f6b85f280c8ad51f981",
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981",
                 "shasum": ""
             },
             "require": {
@@ -1217,7 +1217,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1275,7 +1275,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/service-contracts",
