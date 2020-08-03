@@ -59,6 +59,13 @@ class Admin implements \WP_Framework_Core\Interfaces\Loader, \WP_Framework_Prese
 		foreach ( $this->get_class_list() as $page ) {
 			/** @var Base $page */
 			if ( $this->app->user_can( $this->apply_filters( 'admin_menu_capability', $page->get_capability(), $page ) ) ) {
+				if ( method_exists( $page, 'get_load_priority' ) ) {
+					$priority = $page->get_load_priority();
+					if ( $priority < 0 ) {
+						continue;
+					}
+				}
+
 				$this->pages[] = $page;
 			}
 		}
