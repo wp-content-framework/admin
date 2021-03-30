@@ -139,16 +139,16 @@
         },
         {
             "name": "wp-content-framework/controller",
-            "version": "v1.0.46",
+            "version": "v1.0.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/controller.git",
-                "reference": "1806d880b1e3dfb2922b38bbb7d25b11b6455f56"
+                "reference": "ea7d2a5dc9b5148045322ff8474c0dba5a1637d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/1806d880b1e3dfb2922b38bbb7d25b11b6455f56",
-                "reference": "1806d880b1e3dfb2922b38bbb7d25b11b6455f56",
+                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/ea7d2a5dc9b5148045322ff8474c0dba5a1637d7",
+                "reference": "ea7d2a5dc9b5148045322ff8474c0dba5a1637d7",
                 "shasum": ""
             },
             "require": {
@@ -182,7 +182,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/controller/issues",
-                "source": "https://github.com/wp-content-framework/controller/tree/v1.0.46"
+                "source": "https://github.com/wp-content-framework/controller/tree/v1.0.47"
             },
             "funding": [
                 {
@@ -190,20 +190,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-20T14:18:00+00:00"
+            "time": "2021-03-28T02:37:19+00:00"
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.36",
+            "version": "v1.0.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "914abf3e3fe61e864af8172d8e94c5d5dc3071f3"
+                "reference": "6c959c437b169a58e1ecb506ef21bf169be73bce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/914abf3e3fe61e864af8172d8e94c5d5dc3071f3",
-                "reference": "914abf3e3fe61e864af8172d8e94c5d5dc3071f3",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/6c959c437b169a58e1ecb506ef21bf169be73bce",
+                "reference": "6c959c437b169a58e1ecb506ef21bf169be73bce",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/presenter/issues",
-                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.36"
+                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.37"
             },
             "funding": [
                 {
@@ -245,20 +245,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-15T05:10:59+00:00"
+            "time": "2021-03-29T05:52:27+00:00"
         },
         {
             "name": "wp-content-framework/view",
-            "version": "v1.0.46",
+            "version": "v1.0.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/view.git",
-                "reference": "f58f53f8420df3bddd076a631f6387d261659abb"
+                "reference": "839d2a0c772970496ab2ac7cc34cf7a377985ed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/f58f53f8420df3bddd076a631f6387d261659abb",
-                "reference": "f58f53f8420df3bddd076a631f6387d261659abb",
+                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/839d2a0c772970496ab2ac7cc34cf7a377985ed7",
+                "reference": "839d2a0c772970496ab2ac7cc34cf7a377985ed7",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/view/issues",
-                "source": "https://github.com/wp-content-framework/view/tree/v1.0.46"
+                "source": "https://github.com/wp-content-framework/view/tree/v1.0.47"
             },
             "funding": [
                 {
@@ -300,22 +300,22 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-19T14:00:51+00:00"
+            "time": "2021-03-27T03:50:32+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "composer/xdebug-handler",
-            "version": "1.4.5",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "f28d44c286812c714741478d968104c5e604a1d4"
+                "reference": "f27e06cd9675801df441b3656569b328e04aa37c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/f28d44c286812c714741478d968104c5e604a1d4",
-                "reference": "f28d44c286812c714741478d968104c5e604a1d4",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/f27e06cd9675801df441b3656569b328e04aa37c",
+                "reference": "f27e06cd9675801df441b3656569b328e04aa37c",
                 "shasum": ""
             },
             "require": {
@@ -323,7 +323,8 @@
                 "psr/log": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || 6.5 - 8"
+                "phpstan/phpstan": "^0.12.55",
+                "symfony/phpunit-bridge": "^4.2 || ^5"
             },
             "type": "library",
             "autoload": {
@@ -349,7 +350,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/xdebug-handler/issues",
-                "source": "https://github.com/composer/xdebug-handler/tree/1.4.5"
+                "source": "https://github.com/composer/xdebug-handler/tree/1.4.6"
             },
             "funding": [
                 {
@@ -365,7 +366,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-13T08:04:11+00:00"
+            "time": "2021-03-25T17:01:18+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -983,16 +984,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "be0c7926f5729b15e4e79fd2bf917cac584b1970"
+                "reference": "1e66194bed2a69fa395d26bf1067e5e34483afac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/be0c7926f5729b15e4e79fd2bf917cac584b1970",
-                "reference": "be0c7926f5729b15e4e79fd2bf917cac584b1970",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/1e66194bed2a69fa395d26bf1067e5e34483afac",
+                "reference": "1e66194bed2a69fa395d26bf1067e5e34483afac",
                 "shasum": ""
             },
             "require": {
@@ -1050,7 +1051,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v5.2.5"
+                "source": "https://github.com/symfony/dependency-injection/tree/v5.2.6"
             },
             "funding": [
                 {
@@ -1066,7 +1067,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-05T20:13:41+00:00"
+            "time": "2021-03-22T11:10:24+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1137,16 +1138,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.2.4",
+            "version": "v5.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "710d364200997a5afde34d9fe57bd52f3cc1e108"
+                "reference": "8c86a82f51658188119e62cff0a050a12d09836f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/710d364200997a5afde34d9fe57bd52f3cc1e108",
-                "reference": "710d364200997a5afde34d9fe57bd52f3cc1e108",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8c86a82f51658188119e62cff0a050a12d09836f",
+                "reference": "8c86a82f51658188119e62cff0a050a12d09836f",
                 "shasum": ""
             },
             "require": {
@@ -1179,7 +1180,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v5.2.4"
+                "source": "https://github.com/symfony/filesystem/tree/v5.2.6"
             },
             "funding": [
                 {
@@ -1195,7 +1196,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-12T10:38:38+00:00"
+            "time": "2021-03-28T14:30:26+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
