@@ -139,16 +139,16 @@
         },
         {
             "name": "wp-content-framework/controller",
-            "version": "v1.0.49",
+            "version": "v1.0.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/controller.git",
-                "reference": "37648cd040ded7a76e1e8cb8d762cc1a4cf4112d"
+                "reference": "728c5e09bed3b2b6681d3c6497c2626ccf2b326c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/37648cd040ded7a76e1e8cb8d762cc1a4cf4112d",
-                "reference": "37648cd040ded7a76e1e8cb8d762cc1a4cf4112d",
+                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/728c5e09bed3b2b6681d3c6497c2626ccf2b326c",
+                "reference": "728c5e09bed3b2b6681d3c6497c2626ccf2b326c",
                 "shasum": ""
             },
             "require": {
@@ -182,7 +182,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/controller/issues",
-                "source": "https://github.com/wp-content-framework/controller/tree/v1.0.49"
+                "source": "https://github.com/wp-content-framework/controller/tree/v1.0.50"
             },
             "funding": [
                 {
@@ -190,20 +190,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-04-10T15:23:47+00:00"
+            "time": "2021-04-19T08:07:52+00:00"
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.39",
+            "version": "v1.0.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "7f5ba649cff13c9b79781e2447096b95e6e9a4ce"
+                "reference": "f22e1f2338e54413346ea8ec4d09560737725c1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/7f5ba649cff13c9b79781e2447096b95e6e9a4ce",
-                "reference": "7f5ba649cff13c9b79781e2447096b95e6e9a4ce",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/f22e1f2338e54413346ea8ec4d09560737725c1f",
+                "reference": "f22e1f2338e54413346ea8ec4d09560737725c1f",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/presenter/issues",
-                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.39"
+                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.40"
             },
             "funding": [
                 {
@@ -245,20 +245,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-04-13T03:28:09+00:00"
+            "time": "2021-04-19T08:06:48+00:00"
         },
         {
             "name": "wp-content-framework/view",
-            "version": "v1.0.49",
+            "version": "v1.0.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/view.git",
-                "reference": "9d0907291bbdb79d0b313a3f6ecc7f68c1ce6bdb"
+                "reference": "80ea8c4ac531e2d893edd88e0f4ee2023f8473e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/9d0907291bbdb79d0b313a3f6ecc7f68c1ce6bdb",
-                "reference": "9d0907291bbdb79d0b313a3f6ecc7f68c1ce6bdb",
+                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/80ea8c4ac531e2d893edd88e0f4ee2023f8473e9",
+                "reference": "80ea8c4ac531e2d893edd88e0f4ee2023f8473e9",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/view/issues",
-                "source": "https://github.com/wp-content-framework/view/tree/v1.0.49"
+                "source": "https://github.com/wp-content-framework/view/tree/v1.0.50"
             },
             "funding": [
                 {
@@ -300,7 +300,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-04-09T13:09:08+00:00"
+            "time": "2021-04-17T09:19:41+00:00"
         }
     ],
     "packages-dev": [
@@ -440,16 +440,16 @@
         },
         {
             "name": "pdepend/pdepend",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "b6452ce4b570f540be3a4f46276dd8d8f4fa5ead"
+                "reference": "1632f0cee84512ffd6dde71e58536b3b06528c41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/b6452ce4b570f540be3a4f46276dd8d8f4fa5ead",
-                "reference": "b6452ce4b570f540be3a4f46276dd8d8f4fa5ead",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/1632f0cee84512ffd6dde71e58536b3b06528c41",
+                "reference": "1632f0cee84512ffd6dde71e58536b3b06528c41",
                 "shasum": ""
             },
             "require": {
@@ -485,7 +485,7 @@
             "description": "Official version of pdepend to be handled with Composer",
             "support": {
                 "issues": "https://github.com/pdepend/pdepend/issues",
-                "source": "https://github.com/pdepend/pdepend/tree/2.9.0"
+                "source": "https://github.com/pdepend/pdepend/tree/2.9.1"
             },
             "funding": [
                 {
@@ -493,7 +493,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-11T09:20:40+00:00"
+            "time": "2021-04-15T21:36:28+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
@@ -1071,16 +1071,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.2.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "5fa56b4074d1ae755beb55617ddafe6f5d78f665"
+                "reference": "5f38c8804a9e97d23e0c8d63341088cd8a22d627"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5fa56b4074d1ae755beb55617ddafe6f5d78f665",
-                "reference": "5fa56b4074d1ae755beb55617ddafe6f5d78f665",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5f38c8804a9e97d23e0c8d63341088cd8a22d627",
+                "reference": "5f38c8804a9e97d23e0c8d63341088cd8a22d627",
                 "shasum": ""
             },
             "require": {
@@ -1089,7 +1089,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.4-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -1118,7 +1118,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/master"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.4.0"
             },
             "funding": [
                 {
@@ -1134,7 +1134,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-07T11:33:47+00:00"
+            "time": "2021-03-23T23:28:01+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -1362,21 +1362,21 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.2.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "d15da7ba4957ffb8f1747218be9e1a121fd298a1"
+                "reference": "f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/d15da7ba4957ffb8f1747218be9e1a121fd298a1",
-                "reference": "d15da7ba4957ffb8f1747218be9e1a121fd298a1",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb",
+                "reference": "f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "psr/container": "^1.0"
+                "psr/container": "^1.1"
             },
             "suggest": {
                 "symfony/service-implementation": ""
@@ -1384,7 +1384,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.4-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -1421,7 +1421,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/master"
+                "source": "https://github.com/symfony/service-contracts/tree/v2.4.0"
             },
             "funding": [
                 {
@@ -1437,7 +1437,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-07T11:33:47+00:00"
+            "time": "2021-04-01T10:43:52+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
