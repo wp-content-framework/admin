@@ -139,16 +139,16 @@
         },
         {
             "name": "wp-content-framework/controller",
-            "version": "v1.0.57",
+            "version": "v1.0.58",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/controller.git",
-                "reference": "464342d41aedc8e1d30f9651efe0d46e81f50971"
+                "reference": "dd54091d150301488643846ba355c361fdb39218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/464342d41aedc8e1d30f9651efe0d46e81f50971",
-                "reference": "464342d41aedc8e1d30f9651efe0d46e81f50971",
+                "url": "https://api.github.com/repos/wp-content-framework/controller/zipball/dd54091d150301488643846ba355c361fdb39218",
+                "reference": "dd54091d150301488643846ba355c361fdb39218",
                 "shasum": ""
             },
             "require": {
@@ -182,7 +182,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/controller/issues",
-                "source": "https://github.com/wp-content-framework/controller/tree/v1.0.57"
+                "source": "https://github.com/wp-content-framework/controller/tree/v1.0.58"
             },
             "funding": [
                 {
@@ -190,20 +190,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-06-05T12:19:15+00:00"
+            "time": "2021-06-13T02:46:37+00:00"
         },
         {
             "name": "wp-content-framework/presenter",
-            "version": "v1.0.46",
+            "version": "v1.0.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/presenter.git",
-                "reference": "5110a9633e8e703bf3d7f9d4b0394aa7ca4cfb19"
+                "reference": "d935df26a07395077493413a5ab854710ef7cec2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/5110a9633e8e703bf3d7f9d4b0394aa7ca4cfb19",
-                "reference": "5110a9633e8e703bf3d7f9d4b0394aa7ca4cfb19",
+                "url": "https://api.github.com/repos/wp-content-framework/presenter/zipball/d935df26a07395077493413a5ab854710ef7cec2",
+                "reference": "d935df26a07395077493413a5ab854710ef7cec2",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/presenter/issues",
-                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.46"
+                "source": "https://github.com/wp-content-framework/presenter/tree/v1.0.48"
             },
             "funding": [
                 {
@@ -245,20 +245,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-06-01T14:54:33+00:00"
+            "time": "2021-06-15T03:54:53+00:00"
         },
         {
             "name": "wp-content-framework/view",
-            "version": "v1.0.56",
+            "version": "v1.0.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-content-framework/view.git",
-                "reference": "8a655eb8232696a9e8ea3a52f5328cf96062c4e0"
+                "reference": "b273f1568e7dd77756614817b01b8cf61c8c6e28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/8a655eb8232696a9e8ea3a52f5328cf96062c4e0",
-                "reference": "8a655eb8232696a9e8ea3a52f5328cf96062c4e0",
+                "url": "https://api.github.com/repos/wp-content-framework/view/zipball/b273f1568e7dd77756614817b01b8cf61c8c6e28",
+                "reference": "b273f1568e7dd77756614817b01b8cf61c8c6e28",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-content-framework/view/issues",
-                "source": "https://github.com/wp-content-framework/view/tree/v1.0.56"
+                "source": "https://github.com/wp-content-framework/view/tree/v1.0.57"
             },
             "funding": [
                 {
@@ -300,7 +300,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-06-05T12:19:29+00:00"
+            "time": "2021-06-11T16:41:21+00:00"
         }
     ],
     "packages-dev": [
@@ -1581,5 +1581,5 @@
         "php": ">=5.6.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
